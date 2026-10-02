@@ -1,0 +1,211 @@
+
+				<!-- This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 6:18:39 AM-->
+				@model HotelManagementSystem1.Models.userloginModel
+				@{
+				ViewData["Title"] = "Login";
+				Layout = "~/Views/Shared/_LoginLayout.cshtml";
+				}
+
+				<div class="login">
+				@using(Html.BeginForm("Login", "users", FormMethod.Post, new { enctype="multipart/form-data", @id = "formId"}))
+				{
+
+				@Html.HiddenFor(m => m.clientipaddress)
+				@Html.HiddenFor(m => m.devicename)
+				@Html.HiddenFor(m => m.latlan)
+				@Html.HiddenFor(m => m.browsername)
+	   
+					
+				 
+				@if(ViewData["message"] != null)
+				{
+				<div class="row">
+				<div class="col-sm-12 col-xs-12">
+				<div class="alert alert-danger alert-dismissible ">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">x</span>
+				</button>
+				Info :  @ViewData["message"]
+				</div>
+				</div>
+				</div>
+				}
+				@if(TempData["message"] != null)
+				{
+				<div class="row">
+				<div class="col-sm-12 col-xs-12">
+				<div class="alert alert-danger alert-dismissible ">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">x</span>
+				</button>
+				Info :  @TempData["message"]
+				</div>
+				</div>
+				</div>
+				}
+				@if(TempData["successmessage"] != null)
+				{
+				<div class="row">
+				<div class="col-sm-12 col-xs-12">
+				<div class="alert alert-success alert-dismissible ">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">x</span>
+				</button>
+				Info :  @TempData["successmessage"]
+				</div>
+				</div>
+				</div>
+				}
+						<div class="col-sm-12 col-xs-12">
+				  <div class="form-group">
+					<label for="username">Username</label>
+					<div class="input-group">
+					   @Html.TextBoxFor(m => m.username, new {@type="search",@autocomplete="off",@maxlength="128", @class = "form-control   required" })
+					 
+					  <span class="input-group-addon">
+						<i class="md md-person"></i>
+					 </span>
+					</div>
+				  </div>
+				</div>
+				<div class="col-sm-12 col-xs-12">
+				  <div class="form-group">
+					<label for="userpassword">Password</label>
+					<div class="input-group">
+					   @Html.TextBoxFor(m => m.userpassword, new {@type="password",@autocomplete="off",@maxlength="50",@id = "passwordInput", @class = "form-control required" })
+					  <span class="input-group-addon" id="togglePassword" style="cursor:pointer;">
+						<i class="fa fa-eye" id="showIcon" aria-hidden="true"></i>
+						<i class="fa fa-eye-slash " style="display:none;" id="hideIcon" aria-hidden="true"></i>
+					</span>
+					</div>
+				  </div>
+				</div>
+				
+						 <!--end .col -->
+						<div class="col-sm-12 col-xs-12 text-center localCheck">
+							<button class="btn cma_primary_button" type="submit">Sign In</button>
+						</div>
+						<!--end .col -->
+						<!--end .col -->
+					
+						<div class="col-sm-12 col-xs-12 text-center localCheck">
+													<a href="@Url.Action("Create_tenant","tenant")?businesstype=Hotel Owners"  class="btn cma_secondary_button button-common cma_secondary_signup">Register Hotel Owners</a>
+											</div>
+
+						<div class="col-sm-12 col-xs-12 text-center localCheck">
+								<a href="@Url.Action("forgotpassword","users")"  class="btn cma_secondary_button button-common">Forgot Password ?</a>
+						</div>
+						
+						<!--end .col -->
+					 
+				}
+				</div>
+				<script src="~/components/jquery/jquery.validate.js"></script>
+				<script src="~/components/jquery/additional-methods.min.js"></script>
+				<script>
+				$(document).ready(function () {
+						$('#formId').validate({
+										highlight: function(element) {
+										$(element).closest('.form-group').addClass('has-error');
+										$(element).closest('.form-group').removeClass('has-success');
+										$(element).addClass('form-control-error');
+										$(element).removeClass('form-control-success');
+										},
+										unhighlight: function(element) {
+										$(element).closest('.form-group').removeClass('has-error');
+										$(element).closest('.form-group').addClass('has-success');
+										$(element).addClass('form-control-success');
+										$(element).removeClass('form-control-error');
+										},
+										errorElement: 'span',
+										errorClass: 'help-block',
+										errorPlacement: function(error, element) {
+										error.insertAfter(element.closest('.input-group'));
+										}
+										});
+										
+										
+										 $("#btnSubmit").click(function(){
+												if ($("#formId").valid()){
+														$(".page-loader").show()
+
+														
+														$("#formId").submit();
+												}else{
+													validator.focusInvalid();
+													swal({
+														title: 'Validation Failed!',
+														text: "Please check your entry",
+														type: 'error',
+														buttonsStyling: false,
+														confirmButtonClass: 'btn btn-primary',
+														allowOutsideClick: false,
+														allowEscapeKey: false,
+														allowEnterKey: false
+													})
+												}
+											})
+				})
+				var str = "";
+				</script>
+				<script>
+					$(document).ready(function () {
+						localStorage.removeItem("activeMenuClass");
+						$(document).on('click', '.localClear', function () {
+							localStorage.removeItem("activeMenuClass");
+						});
+					});
+				</script>
+				<script>
+				$('form:first *:input[type!=hidden]:first').focus();
+					if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+					}
+
+ 
+					$("#devicename").val(navigator.platform)
+
+					function showPosition(position) {
+					$("#latlan").val("Latitude: " + position.coords.latitude + ";Longitude: " + position.coords.longitude)
+					}
+
+					$.getJSON("https://api.ipify.org?format=json",
+					function (data) {
+
+					// Setting text of element P with id gfg 
+						$("#clientipaddress").val(data.ip);
+					})
+
+
+				</script>
+<script>
+	$('#togglePassword').on('click', function () {
+		const passwordInput = $('#passwordInput');
+		const showIcon = $('#showIcon');
+		const hideIcon = $('#hideIcon');
+
+		 if (passwordInput.attr('type') === 'password') {
+			passwordInput.attr('type', 'text');
+			showIcon.hide();
+			hideIcon.show();
+		} else {
+			passwordInput.attr('type', 'password');
+			hideIcon.hide();
+			showIcon.show();
+		}
+	});
+</script>
+
+<script>
+		$(document).ready(function() {
+		$('.cma_secondary_signup').on('click', function() {
+			  $.ajax({
+            url: '@Url.Action("ClearSession", "Tenant")',
+            type: 'POST',
+            success: function () {
+            }
+        });
+		});
+	});
+</script>
+				

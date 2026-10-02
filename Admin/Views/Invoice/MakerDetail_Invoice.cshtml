@@ -1,0 +1,534 @@
+
+					<!--This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 8:57:50 AM -->
+					@using Microsoft.AspNetCore.Http
+					@inject IHttpContextAccessor HttpContextAccessor
+					@using Microsoft.Extensions.Configuration
+					@inject IConfiguration Configuration
+					@using Admin;
+					 @model HotelManagementSystem1.Models.InvoiceModel
+					@{
+					ViewData["Title"] = "Invoice";
+					Layout = "~/Views/Shared/_Layout.cshtml";
+					}
+
+					<div class="">
+						 
+					<div class="">
+							
+						<div class="row" id="reworksection" style="display:none">
+							<div class="col-sm-12">
+								<div class="review-common-title rework">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path d="M7.86 2H16.14L22 7.86V16.14L16.14 22H7.86L2 16.14V7.86L7.86 2Z" stroke="#EBB700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M12 8V12" stroke="#EBB700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M12 16H12.01" stroke="#EBB700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+									<label>Reason for Re-work : </label><span class="auto_cls_reviewcomments"> </span>
+								</div>
+							</div>
+						</div>
+		 
+						<div class="row" id="rejectedsection" style="display:none">
+							<div class="col-sm-12">
+								<div class="review-common-title rejected">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path d="M7.86 2H16.14L22 7.86V16.14L16.14 22H7.86L2 16.14V7.86L7.86 2Z" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M12 8V12" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+										<path d="M12 16H12.01" stroke="#FF0000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+									</svg>
+									<label>Reason for Rejection : </label><span class="auto_cls_reviewcomments"> </span>
+								</div>
+							</div>
+						</div>
+						  <div id="cma_printableArea" style="padding:20px">
+							
+							<div class="row printablerow"> 
+							<div class="col-sm-12 col-xs-12 p-1 entityname_craftmyapp_viewcontainer show-on-pdf" style="display:none;text-align:left">
+							<h3>
+							<img src="~/images/logo.png" style="height:60px;width:60px;">
+							<b>Invoice</b>
+							</h3>
+				
+							<br />
+							</div>
+							<div class="col-sm-12 revisions" style="display:none;">
+					<div class="card-head">
+						<header><span class="auto_cls_quotenumber"></span></header>
+						
+						<ul class="nav nav-tabs tabs-vessels pull-right">
+							<li class="dropdown">
+								<a href="javascript:void(0);" class="cma_highlight" data-toggle="dropdown">
+								<i class="md md-more-vert"></i><sup class="badge style-danger number_of_records"></sup>
+								</a>
+								<ul class="dropdown-menu dropleft animation-expand allrecords">
+								</ul><!--end .dropdown-menu -->
+							</li><!--end .dropdown -->
+
+
+						</ul>
+					</div>   
+				</div>           
+							 
+							<div class="col-sm-3 col-xs-12 p-2 invoicenumber_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="invoicenumber">@Resource.invoice_invoicenumber</label><br>
+										<span class="auto_cls_invoicenumber"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 guestno_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="guestno">@Resource.invoice_guestno</label><br>
+										<span class="auto_cls_guestno"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 bookingnumber_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="bookingnumber">@Resource.invoice_bookingnumber</label><br>
+										<span class="auto_cls_bookingnumber"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 invoicedate_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="invoicedate">@Resource.invoice_invoicedate</label><br>
+										<span class="auto_cls_invoicedate"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 roomcharges_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="roomcharges">@Resource.invoice_roomcharges</label><br>
+										<span class="auto_cls_roomcharges"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 taxdiscount_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="taxdiscount">@Resource.invoice_taxdiscount</label><br>
+										<span class="auto_cls_taxdiscount"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 totalamount_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="totalamount">@Resource.invoice_totalamount</label><br>
+										<span class="auto_cls_totalamount"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 verifiedstatus_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="verifiedstatus">@Resource.invoice_verifiedstatus</label><br>
+										<span class="auto_cls_verifiedstatus"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+
+								   <div class="col-sm-12 col-xs-12 mt-3 review_logs_parent hide">
+												<!--Dependent review_logs Containder Block-->
+											   <div class="card card card-blue cma_dependent_band">
+												<div class="card-head">
+														<header>
+															 Review Log
+														</header>
+						   
+													</div>
+												<div class="card-body fluent-card-body commonContainer">
+						 
+														<div class="col-12">
+																<div class="col-12">
+														<ul class="nav nav-tabs tab-nav-right" role="tablist">
+															<li role="presentation" class="active"><a href="#home" data-toggle="tab"><i class="fa fa-calendar"></i></a></li>
+															<li role="presentation"><a href="#profile" data-toggle="tab"><i class="fa fa-history"></i></a></li>
+								
+														</ul>
+
+														<div class="tab-content">
+																<div role="tabpanel" class="tab-pane fade in active" id="home">
+																		<div class="table-responsive-lg">
+																		<table id="review_logsContainer" class="table table-bordered mb-0 review_logsContainer">
+																		<thead id="review_logsContainerHead">
+																		<th>Reviewed On</th>
+																		<th>Reviewed By</th>
+																		<th>Status</th>
+																		<th>Comments</th>
+ 
+																		</thead>
+
+																		<tbody id="review_logsContainerBody">
+																		</tbody>
+
+																		</table>
+																		</div>
+									
+																</div>
+																<div role="tabpanel" class="tab-pane fade" id="profile">
+																		<div class="table-responsive-lg">
+																			<table id="review_logs_historyContainer" class="table table-bordered mb-0 review_logsContainer">
+																			<thead id="review_logsContainerHead">
+																			
+																			<th>Reviewed On</th>
+																			<th>Reviewed By</th>
+																			<th>Status</th>
+																			<th>Comments</th>
+ 
+																			</thead>
+
+																			<tbody id="review_logs_historyContainerBody">
+																			</tbody>
+
+																			</table>
+																		</div>
+																</div>
+								 
+														</div>
+
+
+														  
+														</div>
+														</div>
+													</div>
+												</div>
+											</div>   			 
+								<div class="col-sm-12 p-2 auto_review_comments">
+									<div>
+										<div class="form-group form-group--float-above my-3" > 
+											<label>Review Comments</label><br>
+											<textarea id="reviewcomments" readonly class="form-control auto_cls_reviewcomments" name="reviewcomments"></textarea>
+											<i class="form-group__bar"></i>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-12 col-xs-12 "> 
+									<div class="btn-group pull-right" id="verifiedstatus_buttons">
+									</div>
+								</div>				 
+							</div>
+						 </div>
+						<div id="comparisonContainer"></div>
+						 <div class="row">
+								<div class="col-sm-12 col-xs-12">
+								   
+									<button type="button"  onclick="window.location.href = document.referrer" class="btn btn-secondary cma_cancel_button waves-effect">@Resource.back</button>            
+
+								</div>
+							</div>					
+  
+					</div>
+					 
+					<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+					<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script>
+					<link href="~/css/GallaryContent/style.css" rel="stylesheet" />
+					<link href="~/components/starrr/starrr.css" rel="stylesheet" />
+					 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+					<script type="text/javascript">
+					 function download() {
+							const element = document.getElementById('cma_printableArea');
+
+							const elementsToHide = document.querySelectorAll('.show-on-pdf');
+
+							// Hide the elements
+							elementsToHide.forEach(function (el) {
+							el.style.display = '';
+							});
+
+							html2pdf()
+							.from(element)
+							.save('Invoice.pdf')
+							.then(function () {
+							// Show the hidden elements after generating PDF
+							elementsToHide.forEach(function (el) {
+							el.style.display = 'none';
+							});
+							});
+					}
+					function fill_Invoice_view_data(id){
+						var  Invoiceid = id?id: getUrlVars()["Invoiceid"];
+					   
+											$("#viewDetails_Auto").show()
+											$(".auto_checker_action").hide()
+												$.ajax({
+												url: '@Url.Action("getById_allinfo_Invoice")',
+												dataType: 'json',
+												data:{Invoiceid: Invoiceid },
+												success: function(data) {
+
+												var obj=eval(data[0]);
+													for (var key in obj) {
+													
+															$(".auto_cls_"+key).html(obj[key]|| '-');
+															
+															
+
+															
+															
+															if(key=='verifiedstatus'){
+																 var headerElement = $("div.page-header-box h1");
+
+															  if (obj[key] == 'Rejected'){
+																	$("#rejectedsection").show()
+											headerElement.append(`
+						<div class="review_title">
+							<a href="#" id="rejecticon_header" style="display: block;">
+								<svg width="18" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+									<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+									<g id="SVGRepo_iconCarrier">
+										<circle cx="12" cy="12" r="9" stroke="#FFFFFF"></circle>
+										<path d="M18 18L6 6" stroke="#FFFFFF"></path>
+									</g>
+								</svg>
+								Rejected
+							</a>
+						</div>
+					`);
+		}
+							else if (obj[key] == 'Rework'){
+								$("#reworksection").show()
+								headerElement.append(`<div class="review_title">
+
+			<a href="#" id="reworkicon_header" style="display: block;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none" id="reworkicon_header_icon">
+	<path d="M1 1.77637V6.44426H5.36364" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+	<path d="M16.9999 14.2236V9.55566H12.6362" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+	<path d="M15.1745 5.66605C14.8057 4.55104 14.1788 3.55414 13.3524 2.76839C12.526 1.98264 11.5269 1.43365 10.4485 1.17263C9.3701 0.91161 8.24745 0.947078 7.18532 1.27572C6.12318 1.60437 5.15618 2.21548 4.37455 3.05203L1 6.44404M17 9.55596L13.6255 12.948C12.8438 13.7845 11.8768 14.3956 10.8147 14.7243C9.75255 15.0529 8.6299 15.0884 7.55148 14.8274C6.47307 14.5664 5.47404 14.0174 4.64761 13.2316C3.82119 12.4459 3.1943 11.449 2.82545 10.3339" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg> Rework </a>
+
+				</div>`);
+				}
+																if(obj[key]=='Ready For Review'){
+
+																	 var Actions=getAutho("Invoice","list_verify")
+																	if(Actions != undefined){
+																		 $(".auto_checker_action").show()
+																		$("#reviewcomments").attr('readonly',false)
+																	}
+																			   
+																	 
+
+																	
+																	//$("#reviewcomments").focus()
+
+																}else{
+
+																	$("#reviewcomments").attr('readonly','readonly')
+																
+																
+																}
+
+
+															}	
+															  if (key == 'automaton_review_logs') {
+																$('#review_logsContainerBody').empty()
+																if (obj[key] != null && obj[key] != ""){
+																   $('#review_logsContainerBody').append(get_dependent_table(obj[key]))
+																		$('.review_logs_parent').removeClass('hide')
+																}
+																else{
+																	$('.review_logs_parent').addClass('hide')
+																	$('#review_logsContainerBody').append('No Data Available')
+																}
+
+															}
+															if (key == 'automaton_review_logs_history') {
+																$('#review_logs_historyContainerBody').empty()
+																if (obj[key] != null && obj[key] != ""){
+
+																			
+
+
+
+																		const jsonData = JSON.parse(obj[key])
+																		const distinctQuotes = {};
+																			 let  IdsSet = new Set();
+																		jsonData.forEach(item => {
+																			const quoteNumber = item[""];
+																			const Invoiceid = item["Invoiceid"];
+																			distinctQuotes[Invoiceid] = quoteNumber;
+																			 IdsSet.add(Invoiceid);
+																		});
+																		$(".allrecords").empty()
+
+																					 const IdsSetString = [...IdsSet].join(',');
+
+																					localStorage.setItem('Invoice_Compare', IdsSetString);
+
+
+																	
+																		 
+
+
+																		$.each(jsonData, function(index, item) {
+																		delete item.Invoiceid;
+																		});
+
+																		var jsonWithoutInvoiceid = JSON.stringify(jsonData, null, 2);
+																		$('#review_logs_historyContainerBody').append(get_dependent_table(jsonWithoutInvoiceid))
+																		$('.review_logs_parent').removeClass('hide')
+																}
+																else{
+																	$('.review_logs_parent').addClass('hide')
+																	$('#review_logs_historyContainerBody').append('No Data Available')
+																}
+
+															}
+
+													}
+													
+												}
+
+												})
+
+				   }
+				   
+					 function redirectToSamePage() {
+						// Get the current URL
+						const currentUrl = window.location.href;
+		
+						// Check if the URL already contains query parameters
+						if (currentUrl.indexOf('?') > -1) {
+							// If there are already query parameters, append '&iscompare=Y'
+							window.location.href = currentUrl + '&iscompare=Y';
+						} else {
+							// If there are no query parameters, append '?iscompare=Y'
+							window.location.href = currentUrl + '?iscompare=Y';
+						}
+					}
+					$(document).ready(function () {
+
+$(".auto_checker_action").hide()
+
+$("body").on("click",'.auto_checker_action',function(){
+
+if((this.id =='Rejected' || this.id=='Rework') &&   $("#reviewcomments").val()==''){                                                       
+															swal({
+															title: 'Validation !',
+															text: "Please enter Review Comments",
+															type: 'error',
+															buttonsStyling: false,
+															confirmButtonClass: 'btn btn-primary',
+															allowOutsideClick: false,
+															allowEscapeKey: false,
+															allowEnterKey: false
+															}) 
+															$("#reviewcomments").focus()
+															return;
+														}else{
+
+var  Invoiceid = getUrlVars()["Invoiceid"];
+		$.ajax({
+		url: '@Url.Action("verify_Invoice")',
+		method: 'POST',
+		contentType: 'application/json',
+		dataType: 'json',
+		data: JSON.stringify({
+			Invoiceid: Invoiceid,
+			verifiedstatus: this.id,
+			reviewcomments: $("#reviewcomments").val()
+		}),
+		success: function(data) {
+
+			swal({
+				title: 'Success',
+				text: "Your review has been updated!",
+				type: 'success',
+				buttonsStyling: false,
+				confirmButtonClass: 'btn btn-primary',
+						allowOutsideClick: false,
+						allowEscapeKey: false,
+						allowEnterKey: false
+				}).then(() => {
+				  window.location = document.referrer;
+				});
+
+				fill_Invoice_view_data()
+
+
+		}
+
+		})
+}
+
+
+})
+
+$.ajax({
+	url: '@Url.Action("get_lookups_by_entity","lookups")',
+	dataType: 'json',
+	data:{id: 'Invoice' },
+	success: function(data) {
+
+	$.each(data, function(index, optionDataInner) {
+	if(optionDataInner.fieldname=="verifiedstatus"){
+			var ddltarget_verifiedstatus = "#verifiedstatus_buttons"
+
+			$(ddltarget_verifiedstatus).empty()
+
+			if(optionDataInner.fieldname=="verifiedstatus"){
+	 
+					var options_verifiedstatus = optionDataInner.fielddesc.split(',');
+					options_verifiedstatus.forEach(function(option_verifiedstatus){
+						if(option_verifiedstatus !='Ready For Review' && option_verifiedstatus !='Revised'){
+ var displayText = option_verifiedstatus;
+						if (option_verifiedstatus === "Approved") {
+							displayText = "Approve";
+						}
+						else if
+						(option_verifiedstatus === "Rejected") {
+							displayText = "Reject";
+						}
+						$(ddltarget_verifiedstatus).append('<button style="display:none" class="btn btn-primary   auto_checker_action" id='+option_verifiedstatus+'>'+displayText+'</button>')
+	
+						}		
+					})  
+					fill_Invoice_view_data()
+				}
+
+
+	}
+	})
+
+
+}
+
+})
+
+					
+
+
+ 
+
+
+
+
+					});
+					 
+					</script>
+					 
+					<script type="text/javascript">
+						
+						$(document).ready(function () {
+							
+						});
+					</script>
+					
+					
+					

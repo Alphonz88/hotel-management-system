@@ -1,0 +1,950 @@
+
+					<!--This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 8:57:50 AM -->
+					@using Microsoft.AspNetCore.Http
+					@inject IHttpContextAccessor HttpContextAccessor
+					@using Microsoft.Extensions.Configuration
+					@inject IConfiguration Configuration
+					@using Admin;
+					@model HotelManagementSystem1.Models.InvoiceModel
+					@{
+					ViewData["Title"] = @Resource.addedinvoice;
+					Layout = "~/Views/Shared/_Layout.cshtml";
+					}
+
+					<div class="card maker_checker_card" style="padding:20px;">
+					<div class="mobileHeader"><!--form_card_header-->
+					<div class="row">
+					<div class="col-sm-12 col-xs-12">
+					<h3 class="formHdr">@Resource.addedinvoice</h3>
+					</div>
+					</div>
+					</div><!--form_card_header-->
+					<div class="card-body" style="padding:1px;padding-top:0px;">
+
+					@if(TempData["errMessage"] != null)
+					{
+					<div class="row">
+					<div class="col-sm-12 col-xs-12">
+					<div class="alert alert-danger alert-dismissible ">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">x</span>
+					</button>
+					Info :  @TempData["errMessage"]
+					</div>
+					</div>
+					</div>
+					}
+
+					@if(TempData["message"] != null)
+					{
+					<div class="row">
+					<div class="col-sm-12 col-xs-12">
+					<div class="alert alert-success alert-dismissible ">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">x</span>
+					</button>
+					Info :  @TempData["message"]
+					</div>
+					</div>
+					</div>
+					}
+
+					<input type="hidden" id="Invoiceid" name="Invoiceid"/>
+					<div class="row">
+					<div class="col-sm-2 col-xs-12 p-2 verifiedstatus_craftmyapp_container">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="verifiedstatus">@Resource.invoice_verifiedstatus</label>
+										<select name="verifiedstatus" id="verifiedstatus" class="form-control  "></select>
+
+									</div>
+									@Html.ValidationMessageFor(model => model.verifiedstatus)
+									<div id="verifiedstatus-error" class="help-block" style="display: none" role="alert"></div>
+								</div>
+							</div>
+<div class="col-sm-2 p-2">
+
+												<button id="btnFilter" class="btn btn-secondary btn--icon-text mt-5"><i class="fa fa-filter"></i> Filter</button>
+
+												</div>
+
+					</div>
+
+					<div class="row"><div class="col-sm-5 col-xs-12">
+					<div class="table-responsive" style="margin:0px;">
+					<table id="tblInvoice" class="table order-column hover responsive nowrap mahatTableWidthSetter" style="margin:0px; ">
+					<thead class="thead-default">
+					<tr>
+					
+					<th>@Resource.invoice_invoicenumber</th>
+<th>@Resource.invoice_guestno</th>
+<th>@Resource.invoice_bookingnumber</th>
+<th>@Resource.invoice_invoicedate</th>
+<th>@Resource.invoice_roomcharges</th>
+<th>@Resource.invoice_taxdiscount</th>
+<th>@Resource.invoice_totalamount</th>
+<th>@Resource.invoice_verifiedstatus</th>
+
+					<th class="all">Action</th>
+					
+
+					</tr>
+					</thead>
+					<tbody></tbody>
+					
+					</table>
+					</div>
+
+					</div>
+					
+
+
+									<div class="col-sm-7 col-xs-12"  id="viewDetails_Auto">
+											<div class="card  approve_container">
+						  
+	
+											<div class="row"> 
+											<div class="col-sm-3 col-xs-12 p-2 invoicenumber_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="invoicenumber">@Resource.invoice_invoicenumber</label><br>
+										<span class="auto_cls_invoicenumber"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 guestno_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="guestno">@Resource.invoice_guestno</label><br>
+										<span class="auto_cls_guestno"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 bookingnumber_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="bookingnumber">@Resource.invoice_bookingnumber</label><br>
+										<span class="auto_cls_bookingnumber"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 invoicedate_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="invoicedate">@Resource.invoice_invoicedate</label><br>
+										<span class="auto_cls_invoicedate"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 roomcharges_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="roomcharges">@Resource.invoice_roomcharges</label><br>
+										<span class="auto_cls_roomcharges"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 taxdiscount_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="taxdiscount">@Resource.invoice_taxdiscount</label><br>
+										<span class="auto_cls_taxdiscount"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 totalamount_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="totalamount">@Resource.invoice_totalamount</label><br>
+										<span class="auto_cls_totalamount"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 verifiedstatus_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="verifiedstatus">@Resource.invoice_verifiedstatus</label><br>
+										<span class="auto_cls_verifiedstatus"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+
+											
+											<div class="col-sm-12 p-2 auto_review_comments">
+												<div>
+													<div class="form-group form-group--float-above my-3" > 
+														<label for="reviewcomments">Review Comments</label><br>
+														<textarea id="reviewcomments" readonly class="form-control auto_cls_reviewcomments" name="reviewcomments"></textarea>
+														<i class="form-group__bar" ></i>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-xs-12 "> 
+												<div class="btn-group pull-right" id="verifiedstatus_buttons">
+												</div>
+											</div>
+											 
+											</div>
+											</div>
+											</div>
+											</div>
+					
+					</div>
+					
+					</div>
+					</div>
+					
+					<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+					<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script>
+					<link href="~/css/GallaryContent/style.css" rel="stylesheet" />
+					<link href="~/components/starrr/starrr.css" rel="stylesheet" />
+					
+					<script type="text/javascript">
+
+				 var arr_selected_for_verification = [];
+
+					function fill_Invoice()
+					{
+						
+
+					var sendFilterData = {
+								"verifiedstatus":$("#verifiedstatus").val(),
+ 
+								}
+
+					
+
+
+					
+
+var table=$("#tblInvoice").DataTable({
+columnDefs: [{ 
+	 targets: -1,
+	 title: '<i class="fa fa-pencil fa-lg"></i>'
+  }],
+		
+		destroy:true,
+"orderMulti": false,
+	"order": [],"aaSorting": [],
+	autoWidth: !1,responsive:!0,
+	lengthMenu: [
+	[15, 30, 45, -1],
+	["15 Rows", "30 Rows", "45 Rows", "Everything"]
+	],
+	language: {
+	searchPlaceholder: "Search for records..."
+	},
+	 language: { search: '<i class="fa fa-search"></i>', searchPlaceholder: "Search for records..." },
+	dom: "Bfrtip", sDom: '<"dataTables__top"lfB>rt<"dataTables__bottom"ip><"clear">',
+  
+	buttons: [{
+	extend: "excelHtml5",
+	title: "List Of Invoice Data"
+	}, {
+	extend: "csvHtml5",
+	title: "List Of Invoice Data"
+	}, {
+	extend: "print",
+	title: "List Of Invoice Data"
+	}],
+ initComplete: function(a, b) {
+
+ if(table.page.info().recordsTotal > 0){
+																				 var d =  table.row(':eq(0)').data();
+																				table.$('tr:first').addClass('trbg');
+																				fill_Invoice_view_data(d.invoiceid)
+																				$("#Invoiceid").val(d.invoiceid)
+																				}
+
+	  $(this).closest(".dataTables_wrapper").find(".dt-buttons").hide();
+	  
+if ($('#btnFilter').length && !$(this).closest(".dataTables_wrapper").find(".automatonShowFilter").length) {
+$(this).closest(".dataTables_wrapper").find(".dataTables_length").prepend(`
+		<i class="automatonShowFilter actions__item mdi material-icons">filter_alt</i>
+	  `);
+
+		 if ($("#cma_card_tab_action_container i.automatonShowFilter").length === 0) {
+			$("#cma_card_tab_action_container").prepend(`
+				<i class="automatonShowFilter actions__item mdi material-icons">filter_alt</i>
+			`);
+		}
+ }
+
+var Actions=getAutho("Invoice","create")
+		if(Actions != undefined){
+			var create_URL = "@Url.Action("entry.viewname", "Invoice")"
+			create_URL = create_URL.replace("entry.viewname", Actions.actionmethodname);
+			
+if ($(this).closest(".dataTables_wrapper").find(".dataTables__top .dataTables_buttons").length == 0) {
+			$(this).closest(".dataTables_wrapper").find(".dataTables__top").prepend(`
+		   
+		   
+		<div class="dataTables_buttons actions">
+			<div class="input-group prefix">
+							<span class="input-group-addon">
+							<i class="material-icons">search</i>
+							</span>
+							<input type="text" class="form-control dt-global-search" placeholder="Search..." />
+						</div>
+		  <div class="dropdown actions__item cma_top_icon">
+			<i data-toggle="dropdown" class="material-icons">share</i>
+			<ul class="dropdown-menu dropdown-menu-right">
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="excel">Excel (.xlsx)</a>
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="csv">CSV (.csv)</a>
+			 
+			</ul>
+		  </div>
+		 <div class="dropdown actions__item cma_top_icon">
+									<i data-toggle="dropdown" class="material-icons">settings</i>
+									<ul class="dropdown-menu dropdown-menu-right ColVis_collection">
+									<li>
+																<label> @Resource.invoice_invoicenumber
+ <input type="checkbox" class="colvis_switch" data-column="0" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_guestno
+ <input type="checkbox" class="colvis_switch" data-column="1" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_bookingnumber
+ <input type="checkbox" class="colvis_switch" data-column="2" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_invoicedate
+ <input type="checkbox" class="colvis_switch" data-column="3" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_roomcharges
+ <input type="checkbox" class="colvis_switch" data-column="4" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_taxdiscount
+ <input type="checkbox" class="colvis_switch" data-column="5" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_totalamount
+ <input type="checkbox" class="colvis_switch" data-column="6" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_verifiedstatus
+ <input type="checkbox" class="colvis_switch" data-column="7" checked /></label>
+															  </li>
+   
+									</ul>
+									</div>
+
+		 <a href="create_URL" class="btn btn-rounded add-row-btn cma_add_button">Add <span class="material-icons">add</span></a>
+		</div>
+	  `.replace("create_URL", create_URL))
+}
+
+		$("#cma_card_tab_action_container .card-lst").remove();
+		$("#cma_card_tab_action_container_action_btn").empty()
+		$("#cma_card_tab_action_container_action_btn").append(' <a href="create_URL" class="btn btn-rounded add-row-btn cma_add_button">Add <span class="material-icons">add</span></a>'.replace("create_URL", create_URL))
+	   
+
+if ($(this).hasClass('make-active')) {
+		$('tbody', $(this)).children('tr').first().addClass('active-row');
+		setTimeout(() => {
+		  $('.active-row td:visible:last').addClass('last-active-td');
+		}, 200);
+	  }
+	  $(this).closest(".dataTables_wrapper").find(".dt-global-search").on('keyup', function() {
+		table.search(this.value).draw();
+	  });
+
+		}
+			else{
+if ($(this).closest(".dataTables_wrapper").find(".dataTables__top .dataTables_buttons").length == 0) {
+			$(this).closest(".dataTables_wrapper").find(".dataTables__top").prepend(` 
+		
+		
+		<div class="dataTables_buttons actions">
+		<div class="input-group prefix">
+							<span class="input-group-addon">
+							<i class="material-icons">search</i>
+							</span>
+							<input type="text" class="form-control dt-global-search" placeholder="Search..." />
+						</div>
+		  <div class="dropdown actions__item cma_top_icon">
+			<i data-toggle="dropdown" class="material-icons">share</i>
+			<ul class="dropdown-menu dropdown-menu-right">
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="excel">Excel (.xlsx)</a>
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="csv">CSV (.csv)</a>
+			 
+			</ul>
+		  </div>
+		 <div class="dropdown actions__item cma_top_icon">
+									<i data-toggle="dropdown" class="material-icons">settings</i>
+									<ul class="dropdown-menu dropdown-menu-right ColVis_collection">
+									<li>
+																<label> @Resource.invoice_invoicenumber
+ <input type="checkbox" class="colvis_switch" data-column="0" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_guestno
+ <input type="checkbox" class="colvis_switch" data-column="1" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_bookingnumber
+ <input type="checkbox" class="colvis_switch" data-column="2" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_invoicedate
+ <input type="checkbox" class="colvis_switch" data-column="3" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_roomcharges
+ <input type="checkbox" class="colvis_switch" data-column="4" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_taxdiscount
+ <input type="checkbox" class="colvis_switch" data-column="5" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_totalamount
+ <input type="checkbox" class="colvis_switch" data-column="6" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_verifiedstatus
+ <input type="checkbox" class="colvis_switch" data-column="7" checked /></label>
+															  </li>
+   
+									</ul>
+									</div>
+		</div>
+	  `)
+}
+if ($(this).hasClass('make-active')) {
+		$('tbody', $(this)).children('tr').first().addClass('active-row');
+		setTimeout(() => {
+		  $('.active-row td:visible:last').addClass('last-active-td');
+		}, 200);
+	  }
+	  $(this).closest(".dataTables_wrapper").find(".dt-global-search").on('keyup', function() {
+		table.search(this.value).draw();
+	  });
+
+		}
+		fill_Invoice_count(this,sendFilterData);
+	}
+	 ,columns: [
+		    
+		{data: 'invoicenumber'},
+{data: 'guestno'},
+{data: 'bookingnumber'},
+{data: 'invoicedate'},
+{data: 'roomcharges',mRender: function (data, type, row) {if(row["roomcharges"]==null) {
+ return '-' 
+}else {
+ return '&#8377;'+ row["roomcharges"] 
+}
+}},
+{data: 'taxdiscount'},
+{data: 'totalamount'},
+{data: 'verifiedstatus'},
+
+			{
+				"sName": "invoiceid",
+				"bSearchable": false,
+				"bSortable": false,
+				data: 'invoiceid', "className": "dt-center",
+				mRender: function(data, type, row) {
+				var Actions=getAuthoController("Invoice")
+				var appendMessage='';
+				if(Actions !=undefined)
+				{
+				for (var index = 0; index < Actions.length; ++index) {
+				var entry = Actions[index];
+			 
+				if(entry.viewname !="bulkdelete" &&  entry.viewname !="compare" && entry.viewname !="bulkaction" && entry.viewname !="upload" && entry.viewname !="versionhistory" && entry.viewname !="list" && entry.viewname !="list_verify_approved" && entry.viewname !="list_verify" && entry.viewname !="create" && entry.viewname !="post" && entry.viewname !="getall" && entry.viewname !="get" && entry.viewname !="check_user" && entry.viewname !="change_password"){
+				var URL = "@Url.Action("entry.viewname", "Invoice")?Invoiceid=" + row["invoiceid"]
+				URL = URL.replace("entry.viewname", entry.actionmethodname);
+				 if ((entry.viewname == "maker_detail") || (entry.viewname == "checker_detail")) {
+					appendMessage += '<a href="' + URL + '" class="dropdown-item">' + entry.actiondisplayname + '</a>'
+				}
+				else if(entry.viewname=="delete" && (row["verifiedstatus"]=="Ready For Review" || row["verifiedstatus"]=="Rework"))
+				{
+					 appendMessage+='<a href="' + URL + '" class="dropdown-item deleteRecordFromTable">'+entry.actiondisplayname+'</a>' 	
+				   
+				
+				}
+				
+				else
+				{
+					 if(row["verifiedstatus"]=="Ready For Review" || row["verifiedstatus"]=="Rework")
+						appendMessage+='<a href="' + URL + '" class="dropdown-item">'+entry.actiondisplayname+'</a>' 
+				}
+			 
+				}					 
+						 
+				}
+								
+				if(appendMessage =="")
+				{
+				return '-'
+
+				}
+				else
+				{
+				return '<div class="dropdown actions__item">' +
+				'<i data-toggle="dropdown" class="fa fa-ellipsis-h"></i>' +
+				'<div class="dropdown-menu dropdown-menu-right">' + appendMessage +
+		 
+
+				'</div>' +
+				'</div>'
+				}
+
+
+
+				}
+				else
+				{
+				return '-'
+
+				}
+
+
+				}
+				}
+	
+
+	 ],
+	ajax: {
+	url: "@Url.Action("get_Added_Invoice", "Invoice")",
+	type: 'GET',
+	dataType: 'json',
+	dataSrc: '',
+	data: sendFilterData,
+	error: function(jqXHR, textStatus, errorThrown) {
+	if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"")
+	{
+	swal({
+	title: 'Failed!',
+	text: jqXHR.responseText,
+	type: 'error',
+	buttonsStyling: false,
+	confirmButtonClass: 'btn btn-primary',
+							allowOutsideClick: false,
+						allowEscapeKey: false,
+						allowEnterKey: false
+	}).then(function() {
+	window.location = "@Url.Action("AuthorizationFailed", "users")"
+	}) 
+	}
+	else
+	{
+		swal({
+		title: 'Contact Administrator !',
+		text: jqXHR.responseText,
+		type: 'error',
+		buttonsStyling: false,
+		confirmButtonClass: 'btn btn-primary',
+						allowOutsideClick: false,
+						allowEscapeKey: false,
+						allowEnterKey: false
+		}) 
+	}
+	}
+	}
+	})
+	 
+	  
+ $('body').on('click', '.ColVis_collection li', function(a) {
+	event.stopPropagation();
+  });
+ 
+ $('body').on('change', '.colvis_switch', function(a) {
+	var column = table.column($(this).attr('data-column'));
+	column.visible(!column.visible());
+  });
+
+
+ 
+
+   
+	 
+
+
+	
+
+
+						
+											
+											$.ajax({
+												url: '@Url.Action("get_lookups_by_entity","lookups")',
+												dataType: 'json',
+												data:{id: 'Invoice' },
+												success: function(data) {
+
+												$.each(data, function(index, optionDataInner) {
+												if(optionDataInner.fieldname=="verifiedstatus"){
+												var ddltarget_verifiedstatus = "#verifiedstatus_buttons"
+			
+												$(ddltarget_verifiedstatus).empty()
+			
+												if(optionDataInner.fieldname=="verifiedstatus"){
+												 
+												var options_verifiedstatus = optionDataInner.fielddesc.split(',');
+												options_verifiedstatus.forEach(function(option_verifiedstatus){
+													if(option_verifiedstatus !='Ready For Review')
+													 $(ddltarget_verifiedstatus).append('<button class="btn btn-primary   auto_checker_action" style="display:none;" id='+option_verifiedstatus+'>'+option_verifiedstatus+'</button>')
+												
+												})  
+
+											}
+											
+											
+												}
+												})
+
+
+										}
+
+										})
+											$("#viewDetails_Auto").hide()
+											//$(".dataTables_length").hide()
+											$(".dataTables_filter").hide()
+											$(".dataTables_info").hide()
+											$(".dataTables_paginate").hide()
+										
+												
+												
+													$('#tblInvoice').on('click','.odd,.even' , function(e){
+											
+
+											 
+											$('#tblInvoice tr').removeClass("trbg");
+											$(this).addClass("trbg")
+
+												var $row = $(this).closest('tr');
+												var data = table.row($row).data();
+												var Invoiceid = data.invoiceid;
+												$("#Invoiceid").val(Invoiceid)
+
+												fill_Invoice_view_data(Invoiceid)
+ 
+
+
+												})	
+					}
+					function fill_Invoice_view_data(Invoiceid){
+											$("#viewDetails_Auto").show()
+											$(".auto_checker_action").hide()
+												$.ajax({
+												url: '@Url.Action("getById_allinfo_Invoice")',
+												dataType: 'json',
+												data:{Invoiceid: Invoiceid },
+												success: function(data) {
+
+												var obj=eval(data[0]);
+													for (var key in obj) {
+
+															$(".auto_cls_"+key).html(obj[key]|| '-');
+
+															
+
+															if(key=='verifiedstatus'){
+																	
+																 var headerElement = $("div.page-header-box h1");
+																 if(obj['reviewcomments'] != undefined)
+																	headerElement.html('Added Invoice - <span class="' + obj[key].replace(/ /g, "_").toLowerCase() +'">' + obj[key] +'</span> <span class="hdrcomments ' + obj[key].replace(/ /g, "_").toLowerCase() +'"> ' + obj['reviewcomments'] + ' </span>');
+																 else
+																	headerElement.html('Added Invoice - <span class="' + obj[key].replace(/ /g, "_").toLowerCase() +'">' + obj[key] +'</span>');
+		
+	
+
+																if(obj[key]=='Ready For Review'){
+																	// $(".auto_checker_action").show()
+
+																	$("#reviewcomments").attr('readonly',false)
+																	//$("#reviewcomments").focus()
+
+																}else{
+
+																	$("#reviewcomments").attr('readonly','readonly')
+																
+																
+																}
+																var Actions=getAuthoController("Invoice")	
+															  if( Actions.some(x => x.actionname === "MakerView"))
+															$("#reviewcomments").attr('readonly','readonly')
+
+
+															}	
+															  if (key == 'automaton_review_logs') {
+																$('#review_logsContainerBody').empty()
+																if (obj[key] != null && obj[key] != ""){
+																	$('#review_logsContainerBody').append(get_dependent_table(obj[key]))
+																		$('.review_logs_parent').removeClass('hide')
+																}
+																else{
+																	$('.review_logs_parent').addClass('hide')
+																	$('#review_logsContainerBody').append('No Data Available')
+																}
+
+															}
+															if (key == 'automaton_review_logs_history') {
+																$('#review_logs_historyContainerBody').empty()
+																if (obj[key] != null && obj[key] != ""){
+																		const jsonData = JSON.parse(obj[key])
+																		$.each(jsonData, function(index, item) {
+																		delete item.Invoiceid;
+																		});
+
+																		var jsonWithoutInvoiceid = JSON.stringify(jsonData, null, 2);
+																		$('#review_logs_historyContainerBody').append(get_dependent_table(jsonWithoutInvoiceid))
+																		$('.review_logs_parent').removeClass('hide')
+																}
+																else{
+																	$('.review_logs_parent').addClass('hide')
+																	$('#review_logs_historyContainerBody').append('No Data Available')
+																}
+
+															}
+															
+
+													}
+												}
+
+												})
+
+												}
+
+													
+
+					$(document).ready(function () {
+
+
+					fill_Invoice()
+
+
+					var Actions=getAutho("Invoice","list")
+					if(Actions == undefined){
+					window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+					}
+
+
+
+
+					});
+					
+
+					$("body").on("click", "[data-table-action]", function(a) {
+					a.preventDefault();
+					var b = $(this).data("table-action");
+					console.log('dataTables_wrapper', $(this).closest(".dataTables_wrapper").find(".buttons-print"));
+					if ("excel" === b && $(this).closest(".dataTables_wrapper").find(".buttons-excel").trigger("click"), "csv" === b && $(this).closest(".dataTables_wrapper").find(".buttons-csv").trigger("click"), "print" === b && $(this).closest(".dataTables_wrapper").find(".buttons-print").trigger("click"), "fullscreen" === b) {
+					var c = $(this).closest(".card");
+					c.hasClass("card--fullscreen") ? (c.removeClass("card--fullscreen"), $("body").removeClass("data-table-toggled")) : (c.addClass("card--fullscreen"), $("body").addClass("data-table-toggled"))
+					}
+					});
+					</script>
+					<script>
+var strverifiedstatus;
+</script>
+@if (Model != null)
+{
+if (Model.verifiedstatus != null && Model.verifiedstatus.ToString() != "")
+{
+<script>
+strverifiedstatus = "@Model.verifiedstatus";
+</script>
+}
+}
+
+					<script>
+$(document).ready(function () {
+$.ajax({
+url: '@Url.Action("get_lookups_by_entity","lookups")',
+dataType: 'json',
+data:{id: 'Invoice' },
+success: function(data) {
+
+
+
+		$.each(data, function(index, optionDataInner) {
+
+				
+											if(optionDataInner.fieldname=="verifiedstatus"){
+												var ddltarget_verifiedstatus = "#verifiedstatus"
+												$(ddltarget_verifiedstatus).empty();
+												$(ddltarget_verifiedstatus).append("<option value=''>Choose</option>")
+												var options_verifiedstatus = optionDataInner.fielddesc.split(',');
+												options_verifiedstatus.sort(function (a, b) {
+																		return a.localeCompare(b);
+													});
+												options_verifiedstatus.forEach(function(option_verifiedstatus){
+													if(strverifiedstatus== option_verifiedstatus){
+													$(ddltarget_verifiedstatus).append('<option selected value="' + option_verifiedstatus + '">' + option_verifiedstatus+ '</option>')
+													 
+													}
+													else
+													$(ddltarget_verifiedstatus).append('<option  value="' + option_verifiedstatus + '">' + option_verifiedstatus+ '</option>')
+													  
+												})  
+ 
+											}
+
+
+
+		});
+
+
+},
+error: function(jqXHR, textStatus, errorThrown) {
+if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"")
+{
+swal({
+title: 'Failed!',
+text: jqXHR.responseText,
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+}).then(function() {
+window.location = "@Url.Action("AuthorizationFailed", "users")"
+}) 
+}
+else
+{
+swal({
+title: 'Contact Administrator !',
+text: jqXHR.responseText,
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+}) 
+}
+}
+})
+})
+		
+</script>
+					
+					
+								<script>
+								$(document).ready(function () {
+							 
+
+								$("#btnFilter").click(function(){
+								fill_Invoice();
+								})
+								});
+								</script>
+
+
+					
+					
+					
+					
+					<script>
+					 
+$(document).ready(function () {
+						 
+					 
+$('body').on('click', '.list_status', function(a) {
+$("#verifiedstatus").val($(this).attr('id'))
+
+fill_Invoice()
+});
+
+   
+});
+function fill_Invoice_count(datato,sendFilterdata) {
+
+
+var countofstatus = ''
+
+$.ajax({
+url: '@Url.Action("get_lookups_by_entity","lookups")',
+dataType: 'json',
+data: {
+id: 'Invoice'
+},
+success: function(data) {
+
+$.ajax({
+url: '@Url.Action("count_of_Invoice")',
+dataType: 'json',
+data: sendFilterdata,
+success: function(rowData) {
+
+num=0;
+$.each(data, function(index, optionDataInner) {
+if (optionDataInner.fieldname == "verifiedstatus") {
+
+
+var options_verifiedstatus = optionDataInner.fielddesc.split(',');
+options_verifiedstatus.forEach(function(option_verifiedstatus) {
+var found=0;
+$.each(rowData, function(index_count, optionDataInner_count) {
+	if (optionDataInner_count.verifiedstatus == option_verifiedstatus){
+		found=1
+					var verifiedclass = option_verifiedstatus.replace(/[\s-]/g, '').toLowerCase();
+					num+=Number(optionDataInner_count.count)
+		countofstatus += `<div class="col-sm-2">
+			<div class="list list_status ${verifiedclass}" id="${option_verifiedstatus}">
+				<span><p class="tlt-txt">${option_verifiedstatus}</p></span><div class="lst-num">
+							<label>${optionDataInner_count.count}</label><i class="fa fa-chevron-right" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>`
+
+	}
+									
+
+});
+if(found==0){
+		var verifiedclass = option_verifiedstatus.replace(/[\s-]/g, '').toLowerCase();
+		countofstatus += `<div class="col-sm-2">
+			<div class="list list_status ${verifiedclass}" id="${option_verifiedstatus}">
+				<span><p class="tlt-txt">${option_verifiedstatus}</p></span><div class="lst-num">
+							<label>0</label><i class="fa fa-chevron-right" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>`
+
+}
+
+
+
+})
+
+						 
+
+
+
+
+
+
+}
+})
+				   
+
+}
+
+})
+
+		  
+
+
+}
+
+})
+}
+</script>

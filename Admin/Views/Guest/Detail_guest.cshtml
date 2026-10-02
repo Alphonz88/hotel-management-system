@@ -1,0 +1,272 @@
+
+					<!--This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 6:08:16 AM -->
+					@using Microsoft.AspNetCore.Http
+					@inject IHttpContextAccessor HttpContextAccessor
+					@using Microsoft.Extensions.Configuration
+					@inject IConfiguration Configuration
+					@using Admin;
+					@model HotelManagementSystem1.Models.GuestModel
+					@{
+					ViewData["Title"] = "Guest";
+					Layout = "~/Views/Shared/_Layout.cshtml";
+					}
+
+					<div class="">
+						 
+					<div class="">
+
+						  <div id="cma_printableArea">
+						   
+							
+							<div class="row printablerow"  style="padding:20px"> 
+							  <div class="col-sm-12 col-xs-12 p-1 entityname_craftmyapp_viewcontainer show-on-pdf" style="display:none;text-align:left">
+							<h3>
+							<img src="~/images/logo.png" style="height:60px;width:60px;">
+							<b>Guest</b>
+							</h3>
+				
+							<br />
+							</div>
+							<div class="col-sm-3 col-xs-12 p-2 guestno_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="guestno">@Resource.guest_guestno</label><br>
+										<span class="auto_cls_guestno"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 guestname_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="guestname">@Resource.guest_guestname</label><br>
+										<span class="auto_cls_guestname"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 gender_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="gender">@Resource.guest_gender</label><br>
+										<span class="auto_cls_gender"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 phonenumber_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="phonenumber">@Resource.guest_phonenumber</label><br>
+										<span class="auto_cls_phonenumber"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 email_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="email">@Resource.guest_email</label><br>
+										<span class="auto_cls_email"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+ 
+				<div class="col-sm-12 col-xs-12 mt-3 Address_craftmyapp_container"><!--form_group_div_block-->
+					<div class="card card-blue card-section cma_section_band list_card_section list_card_tablet">
+							<div class="card-head">
+								<header>@Resource.address</header>
+							</div>
+							<div class="card-body card-container-Padding-NoShadow">
+								<div class="row">
+										<div class="col-sm-3 col-xs-12 p-2 addressline1_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="addressline1">@Resource.guest_addressline1</label><br>
+										<span class="auto_cls_addressline1"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 city_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="city">@Resource.guest_city</label><br>
+										<span class="auto_cls_city"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 statename_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="statename">@Resource.guest_statename</label><br>
+										<span class="auto_cls_statename"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 country_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="country">@Resource.guest_country</label><br>
+										<span class="auto_cls_country"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+
+
+								</div>
+							</div>
+					</div>
+				</div><!--form_group_div_block-->
+			 
+<div class="col-sm-3 col-xs-12 p-2 idproof_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="idproof">@Resource.guest_idproof</label><br>
+										<span class="auto_cls_idproof"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+
+											 
+											 
+							</div>
+						 </div>
+						 <div id="comparisonContainer"></div>
+						 <div class="row">
+								<div class="col-sm-12 col-xs-12">
+								 
+								 <button type="button" onclick="window.location.href = document.referrer" class="btn btn-secondary cma_cancel_button cma_back_button waves-effect">@Resource.back</button>            
+
+								</div>
+							</div>					
+  
+					</div>
+					
+					<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+					<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script>
+					<link href="~/css/GallaryContent/style.css" rel="stylesheet" />
+					<link href="~/components/starrr/starrr.css" rel="stylesheet" />
+					 
+					 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+					<script type="text/javascript">
+					 function download() {
+							const element = document.getElementById('cma_printableArea');
+
+							const elementsToHide = document.querySelectorAll('.show-on-pdf');
+
+							// Hide the elements
+							elementsToHide.forEach(function (el) {
+							el.style.display = '';
+							});
+
+							html2pdf()
+							.from(element)
+							.save('Guest.pdf')
+							.then(function () {
+							// Show the hidden elements after generating PDF
+							elementsToHide.forEach(function (el) {
+							el.style.display = 'none';
+							});
+							});
+					}
+
+					function fill_Guest_view_data(){
+
+					   var  Guestid = getUrlVars()["Guestid"];
+											$("#viewDetails_Auto").show()
+											$(".auto_checker_action").hide()
+												$.ajax({
+												url: '@Url.Action("getById_allinfo_Guest")',
+												dataType: 'json',
+												data:{Guestid: Guestid },
+												success: function(data) {
+
+												var obj=eval(data[0]);
+													for (var key in obj) {
+													
+															
+															$(".auto_cls_"+key).html(obj[key]|| '-');
+															
+															if(key=='idproof'){
+																			$('.auto_cls_idproof').empty()
+																			if(obj[key] !=null)  {            
+																		  
+																			var uploaded_idproof = obj[key].split('|');
+																			var iterate = 0;
+																			for (var i = 0; i < uploaded_idproof.length; i++) {
+
+
+																				if (uploaded_idproof[i] != "") {
+																					iterate = iterate + 1;
+																					if (iterate == 1)
+																						$('.auto_cls_idproof').append('<a href=' + uploaded_idproof[i] + ' class="imgidproof auto_clr_idproof"><img  src=' + uploaded_idproof[i] + ' width="100px" alt="img"/></a>')
+																					else
+
+																						$('.auto_cls_idproof').append('<div style="display:none"> <a href=' + uploaded_idproof[i] + ' class="imgidproof auto_clr_idproof"><img  src=' + uploaded_idproof[i] + ' width="100px" alt="img"/></a></div>')
+		 
+																				}
+
+
+																			}
+
+																			$('body').on('click', 'a.imgidproof', function (e) {
+																			e.preventDefault();
+																			$('.imgidproof').colorbox({ rel: '.imgidproof', width: "90%", height: "80%" });
+																			$.colorbox({ open: true });
+																			});
+
+
+
+
+																					}
+
+
+																	}
+
+
+															
+
+													}
+
+													
+												}
+
+												})
+
+				   }
+				   
+
+					$(document).ready(function () {
+
+
+					fill_Guest_view_data()
+
+
+					/*var Actions=getAutho("Guest","list")
+					if(Actions == undefined){
+					window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+					}*/
+
+
+
+
+					});
+					 
+					</script>
+
+					
+					<script type="text/javascript">
+						
+						$(document).ready(function () {
+							
+						});
+					</script>
+					
+					
+					

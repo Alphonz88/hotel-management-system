@@ -1,0 +1,195 @@
+
+					<!--This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 8:38:58 AM -->
+					@using Microsoft.AspNetCore.Http
+					@inject IHttpContextAccessor HttpContextAccessor
+					@using Microsoft.Extensions.Configuration
+					@inject IConfiguration Configuration
+					@using Admin;
+					@model HotelManagementSystem1.Models.ReceptionistModel
+					@{
+					ViewData["Title"] = "Receptionist";
+					Layout = "~/Views/Shared/_Layout.cshtml";
+					}
+
+					<div class="">
+						 
+					<div class="">
+
+						  <div id="cma_printableArea">
+						   
+							
+							<div class="row printablerow"  style="padding:20px"> 
+							  <div class="col-sm-12 col-xs-12 p-1 entityname_craftmyapp_viewcontainer show-on-pdf" style="display:none;text-align:left">
+							<h3>
+							<img src="~/images/logo.png" style="height:60px;width:60px;">
+							<b>Receptionist</b>
+							</h3>
+				
+							<br />
+							</div>
+							<div class="col-sm-3 col-xs-12 p-2 employeeno_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="employeeno">@Resource.receptionist_employeeno</label><br>
+										<span class="auto_cls_employeeno"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 employeename_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="employeename">@Resource.receptionist_employeename</label><br>
+										<span class="auto_cls_employeename"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 shift_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="shift">@Resource.receptionist_shift</label><br>
+										<span class="auto_cls_shift"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 experience_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="experience">@Resource.receptionist_experience</label><br>
+										<span class="auto_cls_experience"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 salary_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="salary">@Resource.receptionist_salary</label><br>
+										<span class="auto_cls_salary"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 phonenumber_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="phonenumber">@Resource.receptionist_phonenumber</label><br>
+										<span class="auto_cls_phonenumber"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 email_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="email">@Resource.receptionist_email</label><br>
+										<span class="auto_cls_email"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+
+											 
+											 
+							</div>
+						 </div>
+						 <div id="comparisonContainer"></div>
+						 <div class="row">
+								<div class="col-sm-12 col-xs-12">
+								 
+								 <button type="button" onclick="window.location.href = document.referrer" class="btn btn-secondary cma_cancel_button cma_back_button waves-effect">@Resource.back</button>            
+
+								</div>
+							</div>					
+  
+					</div>
+					
+					<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+					<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script>
+					<link href="~/css/GallaryContent/style.css" rel="stylesheet" />
+					<link href="~/components/starrr/starrr.css" rel="stylesheet" />
+					 
+					 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+					<script type="text/javascript">
+					 function download() {
+							const element = document.getElementById('cma_printableArea');
+
+							const elementsToHide = document.querySelectorAll('.show-on-pdf');
+
+							// Hide the elements
+							elementsToHide.forEach(function (el) {
+							el.style.display = '';
+							});
+
+							html2pdf()
+							.from(element)
+							.save('Receptionist.pdf')
+							.then(function () {
+							// Show the hidden elements after generating PDF
+							elementsToHide.forEach(function (el) {
+							el.style.display = 'none';
+							});
+							});
+					}
+
+					function fill_Receptionist_view_data(){
+
+					   var  Receptionistid = getUrlVars()["Receptionistid"];
+											$("#viewDetails_Auto").show()
+											$(".auto_checker_action").hide()
+												$.ajax({
+												url: '@Url.Action("getById_allinfo_Receptionist")',
+												dataType: 'json',
+												data:{Receptionistid: Receptionistid },
+												success: function(data) {
+
+												var obj=eval(data[0]);
+													for (var key in obj) {
+													
+															
+															$(".auto_cls_"+key).html(obj[key]|| '-');
+															
+															
+
+															
+
+													}
+
+													
+												}
+
+												})
+
+				   }
+				   
+
+					$(document).ready(function () {
+
+
+					fill_Receptionist_view_data()
+
+
+					/*var Actions=getAutho("Receptionist","list")
+					if(Actions == undefined){
+					window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+					}*/
+
+
+
+
+					});
+					 
+					</script>
+
+					
+					<script type="text/javascript">
+						
+						$(document).ready(function () {
+							
+						});
+					</script>
+					
+					
+					

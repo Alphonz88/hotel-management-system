@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader><data name="accountspayableap" xml:space="preserve">
+    <value>Accounts Payable (AP)</value>
+  </data><data name="accountsreceivablearcollections" xml:space="preserve">
+    <value>Accounts Receivable (AR) &amp; Collections</value>
+  </data><data name="action" xml:space="preserve">
+    <value>Action</value>
+  </data><data name="addcheckin" xml:space="preserve">
+    <value>Add Check IN</value>
+  </data><data name="addcheckout" xml:space="preserve">
+    <value>Add Check out</value>
+  </data><data name="addedinvoice" xml:space="preserve">
+    <value>Added Invoice</value>
+  </data><data name="addfeedback" xml:space="preserve">
+    <value>Add Feedback</value>
+  </data><data name="addguest" xml:space="preserve">
+    <value>Add guest</value>
+  </data><data name="addhousekeeping" xml:space="preserve">
+    <value>Add Housekeeping</value>
+  </data><data name="addinvoice" xml:space="preserve">
+    <value>Add Invoice</value>
+  </data><data name="addpayment" xml:space="preserve">
+    <value>Add Payment</value>
+  </data><data name="addreceptionist" xml:space="preserve">
+    <value>Add Receptionist</value>
+  </data><data name="addreservation" xml:space="preserve">
+    <value>Add reservation</value>
+  </data><data name="address" xml:space="preserve">
+    <value>Address</value>
+  </data><data name="addroom" xml:space="preserve">
+    <value>Add Room</value>
+  </data><data name="agencypartnermanagement" xml:space="preserve">
+    <value>Agency/Partner Management</value>
+  </data><data name="alerttemplates" xml:space="preserve">
+    <value>Alert Templates</value>
+  </data><data name="alerttemplates" xml:space="preserve">
+    <value>AlertTemplates</value>
+  </data><data name="alerttemplates_alertcarboncopyto" xml:space="preserve">
+    <value>Alert Carbon Copy To </value>
+  </data><data name="alerttemplates_alertcontent" xml:space="preserve">
+    <value>Alert Content</value>
+  </data><data name="alerttemplates_alertcopyto" xml:space="preserve">
+    <value>Alert Copy To</value>
+  </data><data name="alerttemplates_alertsubject" xml:space="preserve">
+    <value>Alert Subject</value>
+  </data><data name="alerttemplates_alerttype" xml:space="preserve">
+    <value>Alert Type</value>
+  </data><data name="alerttemplates_entityaction" xml:space="preserve">
+    <value>Entity Action</value>
+  </data><data name="alerttemplates_entityname" xml:space="preserve">
+    <value>Entity Name</value>
+  </data><data name="alerttemplates_sendasbatch" xml:space="preserve">
+    <value>Send as Batch?</value>
+  </data><data name="alerttemplateslist" xml:space="preserve">
+    <value>Alert Templates List</value>
+  </data><data name="appadmin" xml:space="preserve">
+    <value>App Admin</value>
+  </data><data name="apply" xml:space="preserve">
+    <value>Apply</value>
+  </data><data name="approveddetailinvoice" xml:space="preserve">
+    <value>ApprovedDetail Invoice</value>
+  </data><data name="authenticate" xml:space="preserve">
+    <value>Authenticate</value>
+  </data><data name="back" xml:space="preserve">
+    <value>Back</value>
+  </data><data name="beveragemanagementbarprograms" xml:space="preserve">
+    <value>Beverage Management (Bar/Programs)</value>
+  </data><data name="bookingconversionleadsmanagement" xml:space="preserve">
+    <value>Booking Conversion &amp; Leads Management</value>
+  </data><data name="campaignplanningexecution" xml:space="preserve">
+    <value>Campaign Planning &amp; Execution</value>
+  </data><data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data><data name="changepassword" xml:space="preserve">
+    <value>ChangePassword</value>
+  </data><data name="checkerdetailinvoice" xml:space="preserve">
+    <value>CheckerDetail Invoice</value>
+  </data><data name="checkin" xml:space="preserve">
+    <value>Check IN</value>
+  </data><data name="checkin" xml:space="preserve">
+    <value>CheckIN</value>
+  </data><data name="checkinidentityverification" xml:space="preserve">
+    <value>Check-in &amp; Identity Verification</value>
+  </data><data name="checkin_checkindate" xml:space="preserve">
+    <value>CheckInDate</value>
+  </data><data name="checkin_checkinno" xml:space="preserve">
+    <value>CheckIn No</value>
+  </data><data name="checkin_checkintime" xml:space="preserve">
+    <value>Check In Time</value>
+  </data><data name="checkin_depositamount" xml:space="preserve">
+    <value>DepositAmount</value>
+  </data><data name="checkin_guestno" xml:space="preserve">
+    <value>Guest No</value>
+  </data><data name="checkin_roomno" xml:space="preserve">
+    <value>Room No</value>
+  </data><data name="checkin_status" xml:space="preserve">
+    <value>Status</value>
+  </data><data name="checkinlist" xml:space="preserve">
+    <value>Check IN List</value>
+  </data><data name="checkout" xml:space="preserve">
+    <value>Check out</value>
+  </data><data name="checkout" xml:space="preserve">
+    <value>Checkout</value>
+  </data><data name="checkoutdepartureprocessing" xml:space="preserve">
+    <value>Check-out &amp; Departure Processing</value>
+  </data><data name="checkout_checkoutdate" xml:space="preserve">
+    <value>Checkout date</value>
+  </data><data name="checkout_checkoutno" xml:space="preserve">
+    <value>Checkout no</value>
+  </data><data name="checkout_checkouttime" xml:space="preserve">
+    <value>Checkout time</value>
+  </data><data name="checkout_finalbill" xml:space="preserve">
+    <value>Final Bill</value>
+  </data><data name="checkout_guestno" xml:space="preserve">
+    <value>Guest no</value>
+  </data><data name="checkout_roomno" xml:space="preserve">
+    <value>Room No</value>
+  </data><data name="checkout_status" xml:space="preserve">
+    <value>Status</value>
+  </data><data name="checkoutlist" xml:space="preserve">
+    <value>Check out List</value>
+  </data><data name="cleaningscheduling" xml:space="preserve">
+    <value>Cleaning Scheduling</value>
+  </data><data name="client" xml:space="preserve">
+    <value>Client</value>
+  </data><data name="clone" xml:space="preserve">
+    <value>Clone</value>
+  </data><data name="contentbrandmanagement" xml:space="preserve">
+    <value>Content &amp; Brand Management</value>
+  </data><data name="createalerttemplates" xml:space="preserve">
+    <value>Create Alert Templates</value>
+  </data><data name="createhotelowners" xml:space="preserve">
+    <value>Create Hotel Owners</value>
+  </data><data name="createmaillog" xml:space="preserve">
+    <value>Create MailLog</value>
+  </data><data name="demandforecasting" xml:space="preserve">
+    <value>Demand Forecasting</value>
+  </data><data name="detail" xml:space="preserve">
+    <value>Detail</value>
+  </data><data name="detailalerttemplates" xml:space="preserve">
+    <value>Detail Alert Templates</value>
+  </data><data name="detailcheckin" xml:space="preserve">
+    <value>Detail Check IN</value>
+  </data><data name="detailcheckout" xml:space="preserve">
+    <value>Detail Check out</value>
+  </data><data name="detailfeedback" xml:space="preserve">
+    <value>Detail Feedback</value>
+  </data><data name="detailguest" xml:space="preserve">
+    <value>Detail guest</value>
+  </data><data name="detailhousekeeping" xml:space="preserve">
+    <value>Detail Housekeeping</value>
+  </data><data name="detailmaillog" xml:space="preserve">
+    <value>Detail MailLog</value>
+  </data><data name="detailpayment" xml:space="preserve">
+    <value>Detail Payment</value>
+  </data><data name="detailreceptionist" xml:space="preserve">
+    <value>Detail Receptionist</value>
+  </data><data name="detailreservation" xml:space="preserve">
+    <value>Detail reservation</value>
+  </data><data name="detailroom" xml:space="preserve">
+    <value>Detail Room</value>
+  </data><data name="distributionsetupotasgdsdirect" xml:space="preserve">
+    <value>Distribution Setup (OTAs/GDS/Direct)</value>
+  </data><data name="download" xml:space="preserve">
+    <value>Download</value>
+  </data><data name="emergencyrepairsoncallresponse" xml:space="preserve">
+    <value>Emergency Repairs &amp; On-Call Response</value>
+  </data><data name="employee" xml:space="preserve">
+    <value>Employee</value>
+  </data><data name="equipmentinventorymanagement" xml:space="preserve">
+    <value>Equipment &amp; Inventory Management</value>
+  </data><data name="eventcloseoutbilling" xml:space="preserve">
+    <value>Event Close-out &amp; Billing</value>
+  </data><data name="eventexecutionguestexperience" xml:space="preserve">
+    <value>Event Execution &amp; Guest Experience</value>
+  </data><data name="eventplanningstaffing" xml:space="preserve">
+    <value>Event Planning &amp; Staffing</value>
+  </data><data name="eventsalesproposaldevelopment" xml:space="preserve">
+    <value>Event Sales &amp; Proposal Development</value>
+  </data><data name="feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data><data name="feedback_feedbackno" xml:space="preserve">
+    <value>Feedback No</value>
+  </data><data name="feedback_guestno" xml:space="preserve">
+    <value>Guest No</value>
+  </data><data name="feedback_roomrating" xml:space="preserve">
+    <value>Room Rating</value>
+  </data><data name="feedback_staffrating" xml:space="preserve">
+    <value>Staff Rating</value>
+  </data><data name="feedbacklist" xml:space="preserve">
+    <value>Feedback List</value>
+  </data><data name="financialreportingbudgeting" xml:space="preserve">
+    <value>Financial Reporting &amp; Budgeting</value>
+  </data><data name="foodsafetyhygienecompliance" xml:space="preserve">
+    <value>Food Safety &amp; Hygiene Compliance</value>
+  </data><data name="forgotpasswordcommon" xml:space="preserve">
+    <value>Forgotten Password</value>
+  </data><data name="from" xml:space="preserve">
+    <value>From</value>
+  </data><data name="from" xml:space="preserve">
+    <value>From</value>
+  </data><data name="guest" xml:space="preserve">
+    <value>Guest</value>
+  </data><data name="guest_addressline1" xml:space="preserve">
+    <value>AddressLine1</value>
+  </data><data name="guest_city" xml:space="preserve">
+    <value>City</value>
+  </data><data name="guest_country" xml:space="preserve">
+    <value>Country</value>
+  </data><data name="guest_email" xml:space="preserve">
+    <value>Email</value>
+  </data><data name="guest_gender" xml:space="preserve">
+    <value>Gender</value>
+  </data><data name="guest_guestname" xml:space="preserve">
+    <value>Guest Name</value>
+  </data><data name="guest_guestno" xml:space="preserve">
+    <value>guest no</value>
+  </data><data name="guest_idproof" xml:space="preserve">
+    <value>ID Proof</value>
+  </data><data name="guest_phonenumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data><data name="guest_statename" xml:space="preserve">
+    <value>State Name</value>
+  </data><data name="guestbillingposreconciliation" xml:space="preserve">
+    <value>Guest Billing &amp; POS Reconciliation</value>
+  </data><data name="guestcheckoutandbilling" xml:space="preserve">
+    <value>Guest checkout and billing</value>
+  </data><data name="guestfeedbackservicerecovery" xml:space="preserve">
+    <value>Guest Feedback &amp; Service Recovery</value>
+  </data><data name="guestlist" xml:space="preserve">
+    <value>guest List</value>
+  </data><data name="guestreservationandcheckin" xml:space="preserve">
+    <value>guest reservation and checkin  </value>
+  </data><data name="guestsupportduringstay" xml:space="preserve">
+    <value>Guest Support During Stay</value>
+  </data><data name="hotelownersadmin" xml:space="preserve">
+    <value>Hotel Owners Admin</value>
+  </data><data name="housekeeping" xml:space="preserve">
+    <value>Housekeeping</value>
+  </data><data name="housekeeping_cleaningdate" xml:space="preserve">
+    <value>Cleaning Date</value>
+  </data><data name="housekeeping_cleaningstatus" xml:space="preserve">
+    <value>Cleaning Status</value>
+  </data><data name="housekeeping_housekeepingno" xml:space="preserve">
+    <value>Housekeeping No</value>
+  </data><data name="housekeeping_remark" xml:space="preserve">
+    <value>Remarks</value>
+  </data><data name="housekeeping_roomno" xml:space="preserve">
+    <value>Room No</value>
+  </data><data name="housekeeping_supervisor" xml:space="preserve">
+    <value>Supervisor</value>
+  </data><data name="housekeepinglist" xml:space="preserve">
+    <value>Housekeeping List</value>
+  </data><data name="incidentmanagementreporting" xml:space="preserve">
+    <value>Incident Management &amp; Reporting</value>
+  </data><data name="index" xml:space="preserve">
+    <value>Index</value>
+  </data><data name="inspectionsauditreadiness" xml:space="preserve">
+    <value>Inspections &amp; Audit Readiness</value>
+  </data><data name="inspectionsqualitycontrol" xml:space="preserve">
+    <value>Inspections &amp; Quality Control</value>
+  </data><data name="inventoryoverbookingcontrols" xml:space="preserve">
+    <value>Inventory &amp; Overbooking Controls</value>
+  </data><data name="inventoryplanning" xml:space="preserve">
+    <value>Inventory Planning</value>
+  </data><data name="invoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data><data name="invoice_bookingnumber" xml:space="preserve">
+    <value>Booking Number</value>
+  </data><data name="invoice_guestno" xml:space="preserve">
+    <value>Guest No</value>
+  </data><data name="invoice_invoicedate" xml:space="preserve">
+    <value>Invoice Date</value>
+  </data><data name="invoice_invoicenumber" xml:space="preserve">
+    <value>Invoice number</value>
+  </data><data name="invoice_roomcharges" xml:space="preserve">
+    <value>Room charges</value>
+  </data><data name="invoice_taxdiscount" xml:space="preserve">
+    <value>Tax Discount</value>
+  </data><data name="invoice_totalamount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data><data name="invoice_verifiedstatus" xml:space="preserve">
+    <value>Verified Status</value>
+  </data><data name="invoiceforreview" xml:space="preserve">
+    <value>Invoice for Review</value>
+  </data><data name="invoicelist" xml:space="preserve">
+    <value>Invoice List</value>
+  </data><data name="kitchenserviceexecution" xml:space="preserve">
+    <value>Kitchen &amp; Service Execution</value>
+  </data><data name="laundrylinenmanagement" xml:space="preserve">
+    <value>Laundry &amp; Linen Management</value>
+  </data><data name="listofuserprofiles" xml:space="preserve">
+    <value>List of User Profiles</value>
+  </data><data name="login" xml:space="preserve">
+    <value>Login</value>
+  </data><data name="logininformation" xml:space="preserve">
+    <value>Login Information</value>
+  </data><data name="logout" xml:space="preserve">
+    <value>Logout</value>
+  </data><data name="lookups" xml:space="preserve">
+    <value>lookups</value>
+  </data><data name="loyaltyprogramsretention" xml:space="preserve">
+    <value>Loyalty Programs &amp; Retention</value>
+  </data><data name="maillogs" xml:space="preserve">
+    <value>Maillogs</value>
+  </data><data name="maillogs_entityid" xml:space="preserve">
+    <value>Entity ID</value>
+  </data><data name="maillogs_entityname" xml:space="preserve">
+    <value>Entity Name</value>
+  </data><data name="maillogs_issent" xml:space="preserve">
+    <value>Is Sent ?</value>
+  </data><data name="maillogs_mailbody" xml:space="preserve">
+    <value>Mail Body</value>
+  </data><data name="maillogs_mailfor" xml:space="preserve">
+    <value>Mail For</value>
+  </data><data name="maillogs_mailsubject" xml:space="preserve">
+    <value>Mail Subject</value>
+  </data><data name="maillogs_mailto" xml:space="preserve">
+    <value>Mail To</value>
+  </data><data name="maillogslist" xml:space="preserve">
+    <value>MailLogs List</value>
+  </data><data name="makerdetailinvoice" xml:space="preserve">
+    <value>MakerDetail Invoice</value>
+  </data><data name="managehotelowners" xml:space="preserve">
+    <value>Manage Hotel Owners</value>
+  </data><data name="manager" xml:space="preserve">
+    <value>Manager</value>
+  </data><data name="manageroleauthorization" xml:space="preserve">
+    <value>Manage RoleAuthorization</value>
+  </data><data name="manageusers" xml:space="preserve">
+    <value>Manage Users</value>
+  </data><data name="marketsegmentationtargeting" xml:space="preserve">
+    <value>Market Segmentation &amp; Targeting</value>
+  </data><data name="menuplanningpricing" xml:space="preserve">
+    <value>Menu Planning &amp; Pricing</value>
+  </data><data name="payment" xml:space="preserve">
+    <value>Payment</value>
+  </data><data name="payment_guestno" xml:space="preserve">
+    <value>Guest no</value>
+  </data><data name="payment_invoiceno" xml:space="preserve">
+    <value>Invoice No</value>
+  </data><data name="payment_noofdays" xml:space="preserve">
+    <value>No of days</value>
+  </data><data name="payment_paymentdate" xml:space="preserve">
+    <value>Payment Date</value>
+  </data><data name="payment_paymentmethod" xml:space="preserve">
+    <value>Payment Method</value>
+  </data><data name="payment_paymentno" xml:space="preserve">
+    <value>Payment no</value>
+  </data><data name="payment_paymentstatus" xml:space="preserve">
+    <value>Payment Status</value>
+  </data><data name="payment_roomrent" xml:space="preserve">
+    <value>Room Rent</value>
+  </data><data name="payment_totalamount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data><data name="payment_transactionno" xml:space="preserve">
+    <value>Transaction No</value>
+  </data><data name="paymentlist" xml:space="preserve">
+    <value>Payment List</value>
+  </data><data name="payrolllaborcosttracking" xml:space="preserve">
+    <value>Payroll &amp; Labor Cost Tracking</value>
+  </data><data name="performancecompliancemonitoring" xml:space="preserve">
+    <value>Performance &amp; Compliance Monitoring</value>
+  </data><data name="platformadmin" xml:space="preserve">
+    <value>Platform Admin</value>
+  </data><data name="preventivemaintenance" xml:space="preserve">
+    <value>Preventive Maintenance</value>
+  </data><data name="preventivemaintenancecoordination" xml:space="preserve">
+    <value>Preventive Maintenance Coordination</value>
+  </data><data name="print" xml:space="preserve">
+    <value>Print</value>
+  </data><data name="procurementsuppliermanagement" xml:space="preserve">
+    <value>Procurement &amp; Supplier Management</value>
+  </data><data name="promotionspackages" xml:space="preserve">
+    <value>Promotions &amp; Packages</value>
+  </data><data name="providertenantdisplayname" xml:space="preserve">
+    <value>Hotel Owners</value>
+  </data><data name="purchasingvendorquotes" xml:space="preserve">
+    <value>Purchasing &amp; Vendor Quotes</value>
+  </data><data name="ratesettingupdates" xml:space="preserve">
+    <value>Rate Setting &amp; Updates</value>
+  </data><data name="receivingstockallocation" xml:space="preserve">
+    <value>Receiving &amp; Stock Allocation</value>
+  </data><data name="receptionist" xml:space="preserve">
+    <value>Receptionist</value>
+  </data><data name="receptionist_email" xml:space="preserve">
+    <value>Email</value>
+  </data><data name="receptionist_employeename" xml:space="preserve">
+    <value>Employee Name</value>
+  </data><data name="receptionist_employeeno" xml:space="preserve">
+    <value>Employee no</value>
+  </data><data name="receptionist_experience" xml:space="preserve">
+    <value>Experience</value>
+  </data><data name="receptionist_phonenumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data><data name="receptionist_salary" xml:space="preserve">
+    <value>Salary</value>
+  </data><data name="receptionist_shift" xml:space="preserve">
+    <value>Shift</value>
+  </data><data name="receptionistlist" xml:space="preserve">
+    <value>Receptionist List</value>
+  </data><data name="recruitmentonboarding" xml:space="preserve">
+    <value>Recruitment &amp; Onboarding</value>
+  </data><data name="registerprofile" xml:space="preserve">
+    <value>Register Profile</value>
+  </data><data name="regulatorycompliancemonitoring" xml:space="preserve">
+    <value>Regulatory Compliance Monitoring</value>
+  </data><data name="removealerttemplates" xml:space="preserve">
+    <value>Remove Alert Templates</value>
+  </data><data name="removecheckin" xml:space="preserve">
+    <value>Remove Check IN</value>
+  </data><data name="removecheckout" xml:space="preserve">
+    <value>Remove Check out</value>
+  </data><data name="removefeedback" xml:space="preserve">
+    <value>Remove Feedback</value>
+  </data><data name="removeguest" xml:space="preserve">
+    <value>Remove guest</value>
+  </data><data name="removehotelowners" xml:space="preserve">
+    <value>Remove Hotel Owners</value>
+  </data><data name="removehousekeeping" xml:space="preserve">
+    <value>Remove Housekeeping</value>
+  </data><data name="removeinvoice" xml:space="preserve">
+    <value>Remove Invoice</value>
+  </data><data name="removemaillog" xml:space="preserve">
+    <value>Remove MailLog</value>
+  </data><data name="removepayment" xml:space="preserve">
+    <value>Remove Payment</value>
+  </data><data name="removereceptionist" xml:space="preserve">
+    <value>Remove Receptionist</value>
+  </data><data name="removereservation" xml:space="preserve">
+    <value>Remove reservation</value>
+  </data><data name="removeroom" xml:space="preserve">
+    <value>Remove Room</value>
+  </data><data name="reputationmanagement" xml:space="preserve">
+    <value>Reputation Management</value>
+  </data><data name="reservation" xml:space="preserve">
+    <value>Reservation</value>
+  </data><data name="reservation_bookingdate" xml:space="preserve">
+    <value>Booking Date</value>
+  </data><data name="reservation_checkindate" xml:space="preserve">
+    <value>Check in date</value>
+  </data><data name="reservation_checkoutdate" xml:space="preserve">
+    <value>Check out date</value>
+  </data><data name="reservation_guestno" xml:space="preserve">
+    <value>Guest No</value>
+  </data><data name="reservation_noofguests" xml:space="preserve">
+    <value>No of Guests</value>
+  </data><data name="reservation_reservationno" xml:space="preserve">
+    <value>Reservation No</value>
+  </data><data name="reservation_reservationstatus" xml:space="preserve">
+    <value>Reservation status</value>
+  </data><data name="reservation_roomtype" xml:space="preserve">
+    <value>Room Type</value>
+  </data><data name="reservationhandling" xml:space="preserve">
+    <value>Reservation Handling</value>
+  </data><data name="reservationlist" xml:space="preserve">
+    <value>reservation List</value>
+  </data><data name="roles" xml:space="preserve">
+    <value>roles</value>
+  </data><data name="roles_parentname" xml:space="preserve">
+    <value>Parent Name</value>
+  </data><data name="roles_rolegroupname" xml:space="preserve">
+    <value>Role Group Name</value>
+  </data><data name="roles_rolehierarchynumber" xml:space="preserve">
+    <value>Role Hierarchy Number</value>
+  </data><data name="roles_rolename" xml:space="preserve">
+    <value>Role Name</value>
+  </data><data name="room" xml:space="preserve">
+    <value>Room</value>
+  </data><data name="room_availablestauts" xml:space="preserve">
+    <value>Available stauts</value>
+  </data><data name="room_bedtype" xml:space="preserve">
+    <value>Bed Type</value>
+  </data><data name="room_capacitymaxnoofpersons" xml:space="preserve">
+    <value>Capacity (Max no of persons)</value>
+  </data><data name="room_floornumber" xml:space="preserve">
+    <value>Floor Number</value>
+  </data><data name="room_noofguests" xml:space="preserve">
+    <value>No of Guests</value>
+  </data><data name="room_pricepernight" xml:space="preserve">
+    <value>Price Per night</value>
+  </data><data name="room_roomno" xml:space="preserve">
+    <value>Room No</value>
+  </data><data name="room_roomtype" xml:space="preserve">
+    <value>Room Type</value>
+  </data><data name="roomassignmentallocation" xml:space="preserve">
+    <value>Room Assignment &amp; Allocation</value>
+  </data><data name="roomlist" xml:space="preserve">
+    <value>Room List</value>
+  </data><data name="roomstatusmanagement" xml:space="preserve">
+    <value>Room Status Management</value>
+  </data><data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data><data name="savedraft" xml:space="preserve">
+    <value>Save Draft</value>
+  </data><data name="settings" xml:space="preserve">
+    <value>Settings</value>
+  </data><data name="setuptechnicalpreparation" xml:space="preserve">
+    <value>Set-up &amp; Technical Preparation</value>
+  </data><data name="setuphotelowners" xml:space="preserve">
+    <value>Setup Hotel Owners</value>
+  </data><data name="setuphotelownersusers" xml:space="preserve">
+    <value>Setup Hotel Owners Users</value>
+  </data><data name="stockcontrolreorderexecution" xml:space="preserve">
+    <value>Stock Control &amp; Reorder Execution</value>
+  </data><data name="submit" xml:space="preserve">
+    <value>Submit</value>
+  </data><data name="suspendprofile" xml:space="preserve">
+    <value>Suspend Profile</value>
+  </data><data name="tenant" xml:space="preserve">
+    <value>tenant</value>
+  </data><data name="tenant_addressline1" xml:space="preserve">
+    <value>Address Line1</value>
+  </data><data name="tenant_addressline2" xml:space="preserve">
+    <value>Address Line2</value>
+  </data><data name="tenant_businessemail" xml:space="preserve">
+    <value>Organisation  Email</value>
+  </data><data name="tenant_businessname" xml:space="preserve">
+    <value>Organisation  Name</value>
+  </data><data name="tenant_businessphone" xml:space="preserve">
+    <value>Organisation  Phone</value>
+  </data><data name="tenant_businesswebsite" xml:space="preserve">
+    <value>Organisation  Website</value>
+  </data><data name="tenant_city" xml:space="preserve">
+    <value>City</value>
+  </data><data name="tenant_country" xml:space="preserve">
+    <value>Country</value>
+  </data><data name="tenant_natureofbusiness" xml:space="preserve">
+    <value>Nature of Work</value>
+  </data><data name="tenant_numberofemployees" xml:space="preserve">
+    <value>Number of  Employees</value>
+  </data><data name="tenant_organizationlogo" xml:space="preserve">
+    <value>Organization  Logo</value>
+  </data><data name="tenant_parentid" xml:space="preserve">
+    <value>Associated with </value>
+  </data><data name="tenant_password" xml:space="preserve">
+    <value>Password</value>
+  </data><data name="tenant_statename" xml:space="preserve">
+    <value>State</value>
+  </data><data name="tenant_username" xml:space="preserve">
+    <value>Username</value>
+  </data><data name="tenant_userrole" xml:space="preserve">
+    <value>User Role</value>
+  </data><data name="tenant_zip" xml:space="preserve">
+    <value>Zip</value>
+  </data><data name="tenantdisplayname" xml:space="preserve">
+    <value>Hotel Owners</value>
+  </data><data name="to" xml:space="preserve">
+    <value>To</value>
+  </data><data name="trainingcertificationmanagement" xml:space="preserve">
+    <value>Training &amp; Certification Management</value>
+  </data><data name="updatealerttemplates" xml:space="preserve">
+    <value>Update Alert Templates</value>
+  </data><data name="updatecheckin" xml:space="preserve">
+    <value>Update Check IN</value>
+  </data><data name="updatecheckout" xml:space="preserve">
+    <value>Update Check out</value>
+  </data><data name="updatefeedback" xml:space="preserve">
+    <value>Update Feedback</value>
+  </data><data name="updateguest" xml:space="preserve">
+    <value>Update guest</value>
+  </data><data name="updatehotelowners" xml:space="preserve">
+    <value>Update Hotel Owners</value>
+  </data><data name="updatehousekeeping" xml:space="preserve">
+    <value>Update Housekeeping</value>
+  </data><data name="updateinvoice" xml:space="preserve">
+    <value>Update Invoice</value>
+  </data><data name="updatemaillog" xml:space="preserve">
+    <value>Update MailLog</value>
+  </data><data name="updatepayment" xml:space="preserve">
+    <value>Update Payment</value>
+  </data><data name="updateprofile" xml:space="preserve">
+    <value>Update Profile</value>
+  </data><data name="updatereceptionist" xml:space="preserve">
+    <value>Update Receptionist</value>
+  </data><data name="updatereservation" xml:space="preserve">
+    <value>Update reservation</value>
+  </data><data name="updateroom" xml:space="preserve">
+    <value>Update Room</value>
+  </data><data name="user" xml:space="preserve">
+    <value>User</value>
+  </data><data name="users" xml:space="preserve">
+    <value>users</value>
+  </data><data name="users_emailid" xml:space="preserve">
+    <value>Email ID</value>
+  </data><data name="users_firstname" xml:space="preserve">
+    <value>First Name</value>
+  </data><data name="users_lastname" xml:space="preserve">
+    <value>Last Name</value>
+  </data><data name="users_mobilenumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data><data name="users_passwordkey" xml:space="preserve">
+    <value>Password Key</value>
+  </data><data name="users_profilepicture" xml:space="preserve">
+    <value>Profile Picture</value>
+  </data><data name="users_username" xml:space="preserve">
+    <value>UserName</value>
+  </data><data name="users_userpassword" xml:space="preserve">
+    <value>User Password</value>
+  </data><data name="users_userrole" xml:space="preserve">
+    <value>User Role</value>
+  </data><data name="viewdetailshotelowners" xml:space="preserve">
+    <value>ViewDetails Hotel Owners</value>
+  </data><data name="viewdraft" xml:space="preserve">
+    <value>ViewDraft</value>
+  </data><data name="viewdraftlist" xml:space="preserve">
+    <value>ViewDraftList</value>
+  </data><data name="viewlistofhotelowners" xml:space="preserve">
+    <value>View List of Hotel Owners</value>
+  </data><data name="workforcescheduling" xml:space="preserve">
+    <value>Workforce Scheduling</value>
+  </data><data name="workordermanagement" xml:space="preserve">
+    <value>Work Order Management</value>
+  </data></root>

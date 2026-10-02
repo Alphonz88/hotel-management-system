@@ -1,0 +1,1055 @@
+
+			<!-- This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 6:08:16 AM -->
+			@using Microsoft.AspNetCore.Http
+			@inject IHttpContextAccessor HttpContextAccessor
+			@using Microsoft.Extensions.Configuration
+			@inject IConfiguration Configuration
+			@using Admin;
+			@model HotelManagementSystem1.Models.GuestModel
+			@{
+			ViewData["Title"] = @Resource.updateguest;
+
+			Layout = "~/Views/Shared/_Layout.cshtml";
+			
+			}
+
+			@using(Html.BeginForm("Update_guest", "Guest", FormMethod.Post, new { enctype="multipart/form-data", @id = "formId"}))
+			{
+
+			<div class="card card-block contCard"><!--Form_Main_Card-->
+				<div class="mobileHeader"><!--form_card_header-->
+					<div class="row">
+						<div class="col-sm-12 col-xs-12">
+							<h4 class="formHdr">@Resource.updateguest</h4>
+						</div>
+					</div>
+				</div><!--form_card_header-->
+				<!--form_error_display-->
+				@if(ViewData["message"] != null)
+				{
+				<div class="row">
+				<div class="col-sm-12 col-xs-12">
+				<div class="alert alert-danger alert-dismissible ">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">x</span>
+				</button>
+				Info :  @ViewData["message"]
+				</div>
+				</div>
+				</div>
+				}
+				
+				
+				 
+				
+				<!--form_error_display-->
+				<div class=""><!--form_inner_card-->
+					<div class="card-block"><!--form_inner_card_block-->
+						@Html.HiddenFor(m => m.Guestid)
+						    
+						 
+
+						
+						<div class="row"><!--field_container_row-->
+							<!--fieldsStartsHere-->
+							   <div class="col-sm-3 col-xs-12 p-2 tenantSection">
+						<div>
+						<div class="form-group form-group--float-above my-3" > 
+						<label for="tenantid" class="tenant_display tenant_label">@Resource.tenantdisplayname</label>
+						<select name="tenantid" id="tenantid" class="form-control tenant_display">
+						</select>
+						<i class="form-group__bar"></i>
+						</div>
+						
+						<div id="tenantid-error" class="help-block" style="display: none" role="alert"></div>
+						</div>
+						</div>		
+								<div class="col-sm-3 col-xs-12 p-2 guestno_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="guestno">@Resource.guest_guestno</label>
+								@Html.TextBoxFor(m => m.guestno, new {@type="text",@maxlength="128", @class = "form-control form-control-lg mahat_transliterate " })
+
+								 @Html.ValidationMessageFor(model => model.guestno)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 guestname_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="guestname">@Resource.guest_guestname</label>
+								@Html.TextBoxFor(m => m.guestname, new {@type="text",@maxlength="128", @class = "form-control form-control-lg mahat_transliterate " })
+
+								 @Html.ValidationMessageFor(model => model.guestname)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 gender_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="gender">@Resource.guest_gender</label>
+								@Html.TextBoxFor(m => m.gender, new {@type="text",@maxlength="128", @class = "form-control form-control-lg mahat_transliterate " })
+
+								 @Html.ValidationMessageFor(model => model.gender)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 phonenumber_craftmyapp_container craftmyapp_phone_container">
+						<div>
+							<div class="form-group" > 
+								<label for="phonenumber">@Resource.guest_phonenumber</label>
+								<input type="tel" name="phonenumber_ip" id="phonenumber_ip" class="form-control  ">
+@Html.HiddenFor(m => m.phonenumber, new {@class = "invalidphone" })
+
+								 @Html.ValidationMessageFor(model => model.phonenumber)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 email_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="email">@Resource.guest_email</label>
+								@Html.TextBoxFor(m => m.email, new {@type="email",@maxlength="128", @class = "form-control form-control-lg " })
+
+								 @Html.ValidationMessageFor(model => model.email)
+							</div>
+						</div>
+					</div>
+ 
+				<div class="col-sm-12 col-xs-12 mt-3 Address_craftmyapp_container"><!--form_group_div_block-->
+					<div class="card card-blue card-section cma_section_band list_card_section list_card_tablet">
+							<div class="card-head">
+								<header>@Resource.address</header>
+							</div>
+							<div class="card-body card-container-Padding-NoShadow">
+								<div class="row">
+										<div class="col-sm-3 col-xs-12 p-2 addressline1_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="addressline1">@Resource.guest_addressline1</label>
+								@Html.TextBoxFor(m => m.addressline1, new {@type="text",@maxlength="256", @class = "form-control form-control-lg mahat_transliterate " })
+
+								 @Html.ValidationMessageFor(model => model.addressline1)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 city_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="city">@Resource.guest_city</label>
+								@Html.TextBoxFor(m => m.city, new {@type="text",@maxlength="256", @class = "form-control form-control-lg mahat_transliterate " })
+
+								 @Html.ValidationMessageFor(model => model.city)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 statename_craftmyapp_container">
+						<div>
+							<div class="form-group" > 
+								<label for="statename">@Resource.guest_statename</label>
+								@Html.TextBoxFor(m => m.statename, new {@type="text",@maxlength="256", @class = "form-control form-control-lg mahat_transliterate " })
+
+								 @Html.ValidationMessageFor(model => model.statename)
+							</div>
+						</div>
+					</div>
+<div class="col-sm-3 col-xs-12 p-2 country_craftmyapp_container">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="country">@Resource.guest_country</label>
+										<select name="country" id="country" class="form-control  "></select>
+
+									</div>
+									@Html.ValidationMessageFor(model => model.country)
+									<div id="country-error" class="help-block" style="display: none" role="alert"></div>
+								</div>
+							</div>
+
+
+								</div>
+							</div>
+					</div>
+				</div><!--form_group_div_block-->
+			 
+<div class="col-sm-3 col-xs-12 p-2 idproof_craftmyapp_container list_card_section list_card_tablet">
+											<div>
+											   
+												<div class="form-group form-group--float-above my-3">
+												 <label for="idproof">@Resource.guest_idproof</label>
+													<div class="input-file">
+														<input type="hidden"  id="idproof_existing" name="idproof_existing">
+														<div id="dropZoneidproof" class="drop-zone">
+														<input type="file" multiple accept="image/*"  id="idproof" name="idproof" class="attachments file-browse" >
+														<label for="idproof">Browse</label>
+														<span class="idprooffilebtn filebtn"></span>
+													
+													
+													</div>
+														<div id="attachmentDisp" href="" >
+															<span id = "idproofshowFiles" class="btn-sm btn-default showFiles" data-toggle="modal" data-target="#idproofModalotherdocuments"></span>
+														</div>
+													</div>                                                   
+													<!--uploaded files-->
+													<!-- Modal content-->
+													<div class="modal-content uploaded_files" id="idproofModalotherdocuments">
+														<div class="modal-header">
+															<h4 class="modal-title"><img src = "~/images/upload-file.png" alt="file"/><span>Uploaded Files</span></h4>
+															<button type = "button" class="close" data-dismiss="modal">&times;</button>
+														</div>
+														<div class="modal-body">
+															<div id = "idproofAttachedFiles">
+																<table id = "idprooffilesTab" class="table table-striped"></table>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type = "button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										 </div>
+
+
+							<!--fieldsEndsHere-->	
+						</div><!--field_container_row-->
+
+
+						<div class="card-block"><!--form_button_card_block-->
+							<button type="button" onclick="window.location.href = document.referrer"  class="btn btn-secondary cma_cancel_button waves-effect">@Resource.back</button>
+							<button type="button" id="btnSubmit" class="btn cma_primary_button  cma_save_button waves-effect pull-right">@Resource.updateguest</button>
+						</div><!--form_button_card_block-->
+
+
+					</div><!--form_inner_card_block-->
+				</div><!--form_inner_card-->
+			</div><!--Form_Main_Card-->
+
+			}<!--EndFORM-->
+
+
+			
+			 <!--from_cma_script-->
+			 <script type="text/javascript">
+				$(document).ready(function () {
+
+
+				var Actions=getAutho("Guest","edit")
+				if(Actions == undefined){
+				window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+				}
+
+
+				});
+				</script>
+			
+			<script>
+$(document).ready(function () {
+var phonenumber_input = document.querySelector("#phonenumber_ip");
+		var itiphonenumber_input = window.intlTelInput(phonenumber_input, {
+			nationalMode: true,
+			initialCountry: "in",
+			preferredCountries: ['us','in','sg']
+		});
+		itiphonenumber_input.setNumber($('#phonenumber').val());
+		var handleChange_phonenumber_input = function () {
+		var text = "";
+		if(itiphonenumber_input.getNumber())
+			  text = (itiphonenumber_input.isValidNumber()) ? itiphonenumber_input.getNumber() : "invalid";
+			 $('#phonenumber').val(text);
+		};
+
+		// listen to "keyup", but also "change" to update when the user selects a country
+		phonenumber_input.addEventListener('change', handleChange_phonenumber_input);
+		phonenumber_input.addEventListener('keyup', handleChange_phonenumber_input);
+
+		phonenumber_input.addEventListener("countrychange", function () {
+			$('#phonenumber_ip').val("");
+			$('#phonenumber').val("");
+		})
+})
+</script>
+<script>
+var strcountry;
+</script>
+@if (Model != null)
+{
+if (Model.country != null && Model.country.ToString() != "")
+{
+<script>
+strcountry = "@Model.country";
+</script>
+}
+}
+<script>
+	var idproofuploaded_attachments=[];
+	 
+</script>
+	@if (Model != null)
+	{
+		if(Model.idproof != null && Model.idproof.ToString() != "")
+		{
+		<script>
+			 idproofuploaded_attachments= "@Model.idproof".split('|').filter(Boolean);
+			$("#idproof_existing").val("@Model.idproof")
+		</script>
+		}
+	}
+ 
+<script>
+	
+   
+	var fileInputidproof = document.getElementById('idproof');
+	
+	var filesTabidproof = $('#idprooffilesTab');
+	var uploadernameidproof = document.querySelector(".idprooffilebtn");
+	var idproofselectedFiles = [];
+	var idproofexistingFiles = idproofuploaded_attachments;
+	renderExistingFileListOfidproof();
+	updateFileCountofidproof();
+	var lastActiveDropZone = null;
+
+	fileInputidproof.addEventListener('change', function (e) {
+		var files = e.target.files;
+
+		// Append the newly selected files to the existing idproofselectedFiles array
+		idproofselectedFiles.push(...files);
+
+
+		// Render the file list
+		renderFileListofidproof();
+
+		 
+
+		// Update the file count
+		updateFileCountofidproof();
+	});
+
+	// Drag & Drop and Paste functionality
+	var dropZone = document.getElementById('dropZoneidproof');
+
+	// Click to paste functionality
+	dropZone.addEventListener('click', function () {
+		lastActiveDropZone = 'idproof';
+		// Try to read from clipboard
+		if (navigator.clipboard && navigator.clipboard.read) {
+			navigator.clipboard.read().then(items => {
+				items.forEach(item => {
+					if (item.types.includes('image/png') || item.types.includes('image/jpeg')) {
+						item.getType(item.types[0]).then(blob => {
+							var file = new File([blob], "pasted_image.png", { type: blob.type });
+							idproofselectedFiles.push(file);
+							renderFileListofidproof();
+							updateFileCountofidproof();
+							clearClipboard();  
+						});
+					}
+				});
+			}).catch(err => {
+				console.error('Failed to read clipboard contents: ', err);
+			});
+		}
+	});
+
+	// Drag over event
+	dropZone.addEventListener('dragover', function (event) {
+		event.preventDefault();
+		dropZone.classList.add('dragover');
+		lastActiveDropZone = 'idproof';
+	});
+
+	// Drag leave event
+	dropZone.addEventListener('dragleave', function (event) {
+		event.preventDefault();
+		dropZone.classList.remove('dragover');
+	});
+
+	// Drop event
+	dropZone.addEventListener('drop', function (event) {
+		event.preventDefault();
+		dropZone.classList.remove('dragover');
+		var files = event.dataTransfer.files;
+		idproofselectedFiles.push(...files);
+		renderFileListofidproof();
+		updateFileCountofidproof();
+	});
+
+	// Global paste event
+	document.addEventListener('paste', function (event) {
+		if (lastActiveDropZone === 'idproof') {
+			var items = event.clipboardData.items;
+			for (var i = 0; i < items.length; i++) {
+				if (items[i].kind === 'file') {
+					var file = items[i].getAsFile();
+					idproofselectedFiles.push(file);
+					renderFileListofidproof();
+					updateFileCountofidproof();
+					clearClipboard(); 
+				} else if (items[i].kind === 'string') {
+					items[i].getAsString(function (text) {
+						// Check if it's an image URL
+						if (text.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+							var img = new Image();
+							img.onload = function () {
+								var canvas = document.createElement('canvas');
+								canvas.width = img.width;
+								canvas.height = img.height;
+								var ctx = canvas.getContext('2d');
+								ctx.drawImage(img, 0, 0);
+								canvas.toBlob(function (blob) {
+									var file = new File([blob], "pasted_image.png", { type: blob.type });
+									idproofselectedFiles.push(file);
+									renderFileListofidproof();
+									updateFileCountofidproof();
+									clearClipboard();  // Clear the clipboard after processing the image
+								}, 'image/png');
+							};
+							img.src = text;
+						}
+					});
+				}
+			}
+		}
+		});
+	 
+	function renderExistingFileListOfidproof() {
+		// Remove all <tr> elements with the class name existingFile
+		filesTabidproof.find('tr.existingFile').remove();
+
+
+		// Render the updated file list
+		for (var i = 0; i < idproofexistingFiles.length; i++) {
+			var file = idproofexistingFiles[i];
+
+			var fileName = file;
+			var icon_Class = getIconClass(fileName);
+			  var filedisplayname = fileName.substring(fileName.lastIndexOf('/') + 1);
+																				 
+			var row = $('<tr>').attr('id', 'fileidproof' + i).attr('class', 'existingFile');
+			row.append($('<td>').addClass('ico_lst').html('<img src="' + vBaseurl + '' + icon_Class + '" alt="icon"/>'));
+			row.append($('<td>').addClass('cont_lst').html('<a href="' + fileName + '" target="_blank" id="' + fileName + '" class="filedisplay" title="' + fileName + '"><span>' + filedisplayname + '</span></a>'));
+			row.append($('<td>').addClass('delete_lst').html('<span class="btn btn-sm deleteAttach delexistingidproof' + i + '"><img src="' + vBaseurl + '/images/delete.png" alt="icon"></span>'));
+
+			filesTabidproof.append(row);
+
+			// Bind the click event for the delete button using a function
+			bindDeleteExistingEventidproof(i);
+		}
+	}
+
+	function renderFileListofidproof() {
+		// Remove all <tr> elements with the class name newFile
+		filesTabidproof.find('tr.newFile').remove();
+
+		// Render the updated file list
+		for (var i = 0; i < idproofselectedFiles.length; i++) {
+			var file = idproofselectedFiles[i];
+
+			var fileName = file.name;
+			var icon_Class = getIconClass(fileName);
+
+			var row = $('<tr>').attr('id', 'fileidproof' + i).attr('class', 'newFile');
+			row.append($('<td>').addClass('ico_lst').html('<img src="' + vBaseurl + '' + icon_Class + '" alt="icon"/>'));
+			row.append($('<td>').addClass('cont_lst').html('<a href="' + URL.createObjectURL(file) + '" target="_blank" id="' + fileName + '" class="filedisplay" title="' + fileName + '"><span>' + fileName + '</span></a>'));
+			row.append($('<td>').addClass('delete_lst').html('<span class="btn btn-sm deleteAttach delidproof' + i + '"><img src="' + vBaseurl + '/images/delete.png" alt="icon"></span>'));
+
+			filesTabidproof.append(row);
+
+			// Bind the click event for the delete button using a function
+			bindDeleteEventidproof(i);
+		}
+	}
+
+	function bindDeleteEventidproof(index) {
+		$(".delidproof" + index).click(function () {
+			// Remove the file from the selected files array
+			idproofselectedFiles.splice(index, 1);
+
+			// Re-render the file list
+			renderFileListofidproof();
+
+			// Update the file count
+			updateFileCountofidproof();
+		});
+	}
+	function bindDeleteExistingEventidproof(index) {
+		$(".delexistingidproof" + index).click(function () {
+			// Remove the file from the selected files array
+			idproofexistingFiles.splice(index, 1);
+			
+			$("#idproof_existing").val(idproofexistingFiles.join('|'))
+			
+			// Re-render the file list
+			renderExistingFileListOfidproof();
+
+			// Update the file count
+			updateFileCountofidproof();
+		});
+	}
+	function updateFileCountofidproof() {
+		// Display the file count
+		uploadernameidproof.innerHTML = idproofselectedFiles.length + idproofexistingFiles.length + ' files selected';
+		 
+	}
+	function clearClipboard() {
+		if (navigator.clipboard && navigator.clipboard.writeText) {
+			navigator.clipboard.writeText('').then(function () {
+				console.log('Clipboard cleared');
+			}, function (err) {
+				console.error('Could not clear clipboard: ', err);
+			});
+		}
+	}
+
+
+</script>
+<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+								<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script> 
+
+			<script>
+$(document).ready(function () {
+$.ajax({
+url: '@Url.Action("get_lookups_by_entity","lookups")',
+dataType: 'json',
+data:{id: 'Guest' },
+success: function(data) {
+
+
+
+		$.each(data, function(index, optionDataInner) {
+
+				
+											if(optionDataInner.fieldname=="country"){
+												var ddltarget_country = "#country"
+												$(ddltarget_country).empty();
+												$(ddltarget_country).append("<option value=''>Choose</option>")
+												var options_country = optionDataInner.fielddesc.split(',');
+												options_country.sort(function (a, b) {
+																		return a.localeCompare(b);
+													});
+												options_country.forEach(function(option_country){
+													if(strcountry== option_country){
+													$(ddltarget_country).append('<option selected value="' + option_country + '">' + option_country+ '</option>')
+													 
+													}
+													else
+													$(ddltarget_country).append('<option  value="' + option_country + '">' + option_country+ '</option>')
+													  
+												})  
+ 
+											}
+
+
+
+		});
+
+
+},
+error: function(jqXHR, textStatus, errorThrown) {
+if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"")
+{
+swal({
+title: 'Failed!',
+text: jqXHR.responseText,
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+}).then(function() {
+window.location = "@Url.Action("AuthorizationFailed", "users")"
+}) 
+}
+else
+{
+swal({
+title: 'Contact Administrator !',
+text: jqXHR.responseText,
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+}) 
+}
+}
+})
+})
+		
+</script>
+			
+			 
+@if (Model != null)
+{
+<script>
+str_tenantid = "@Model.tenantid"
+</script>
+}
+<script>
+
+
+// Function to create the option elements
+function createOptionElement(value, label, className) {
+	var option = document.createElement("option");
+	option.value = value;
+	option.textContent = label;
+	option.className = className;
+	return option;
+}
+
+// Function to populate the dropdown
+function populateDropdown(data) {
+	var dropdown = document.getElementById("tenantid");
+	dropdown.innerHTML = '<option value=""> Choose </option>';
+
+	// Create a dictionary to store child options grouped by parentid
+	var groupedOptions = { };
+
+				// Filter out duplicate entries with the same businessname
+				var filteredData = [];
+				var uniqueNames = new Set();
+
+				data.forEach(function(item) {
+					if (!uniqueNames.has(item.businessname))
+					{
+						filteredData.push(item);
+						uniqueNames.add(item.businessname);
+					}
+				});
+
+				// Group child options under corresponding parent options
+				filteredData.forEach(function(item) {
+					if (!item.parentid)
+					{
+						dropdown.appendChild(createOptionElement(item.tenantid, item.businessname, "optionGroup"));
+					}
+					else
+					{
+						if (!groupedOptions[item.parentid])
+						{
+							groupedOptions[item.parentid] = [];
+						}
+						groupedOptions[item.parentid].push(item);
+					}
+				});
+
+				// Add child options to their corresponding parent options
+				Object.keys(groupedOptions).forEach(function(parentid) {
+					var parentOption = dropdown.querySelector('[value="' + parentid + '"]');
+					groupedOptions[parentid].forEach(function(childOption) {
+						parentOption.insertAdjacentElement('afterend', createOptionElement(childOption.tenantid, childOption.businessname, "optionChild"));
+					});
+				});
+				
+				filteredData.forEach(function (item) {
+					if (!item.parentid && !groupedOptions[item.tenantid]) {
+						var parentOption = dropdown.querySelector('[value="' + item.tenantid + '"]');
+						if(item.natureofbusiness?.indexOf("Lead") !== -1)
+						parentOption.classList.add("optionNoChildLead");
+						else
+						parentOption.classList.add("optionNoChild");
+					}
+				});
+
+				$("#tenantid").val(str_tenantid);
+				$("#tenantid").select2()
+				var space = '&nbsp;&nbsp;&nbsp;'
+				$("#tenantid").find('.optionChild').prepend(space);
+				
+
+			}
+$(document).ready(function () {
+ if ("@Context.Session.GetString("HotelManagementSystem1showtenant")" =="Y")
+ {
+$.ajax({
+url: '@Url.Action("get_project_tenant","tenant")',
+dataType: 'json',
+data:{"businesstype": "Hotel Owners","tenantid": "@Context.Session.GetString("HotelManagementSystem1choosedtenantid")"},
+success: function(data) {
+
+    populateDropdown(data);
+		
+	
+ 
+
+},
+error: function(jqXHR, textStatus, errorThrown) {
+if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"")
+{
+swal({
+title: 'Failed!',
+text: jqXHR.responseText,
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+}).then(function() {
+window.location = "@Url.Action("AuthorizationFailed", "users")"
+}) 
+}
+else
+{
+swal({
+title: 'Contact Administrator !',
+text: jqXHR.responseText,
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+}) 
+}
+}
+})
+}else
+{
+
+	$(".tenant_display").hide()
+}
+});
+</script>
+			
+			<script>
+			
+			
+			
+			</script>
+			
+  
+ 
+							<script>
+							var posturl='';
+							</script>
+
+							 @if (Model == null)
+							 {
+								 <script>
+								posturl = '@Url.Action("Add_guest")';
+								$('.error-file').hide()
+								</script>
+							}else{
+	   
+									<script>
+												   posturl = '@Url.Action("Update_guest")';
+			 
+														  </script>    			              
+							  
+	 
+														ViewData["Title"] = @Resource.updateguest;
+														 <script>
+				   
+													 $("#btnSubmit").html("@Resource.updateguest")
+														  </script>    
+ 
+ 
+							}
+
+<script>
+$(document).ready(function () {
+	
+	
+		   
+				$.validator.addMethod("invalidphone", function (value, element) {
+				if (value == 'invalid') {
+				return false;
+				}
+				return true;
+				}, "Please enter valid value");
+
+										$('#formId').validate({
+										ignore: ":hidden:not(.invalidphone)",
+										highlight: function(element) {
+										$(element).closest('.form-group').addClass('has-error');
+										$(element).closest('.form-group').removeClass('has-success');
+										$(element).addClass('form-control-error');
+										$(element).removeClass('form-control-success');
+										},
+										unhighlight: function(element) {
+										$(element).closest('.form-group').removeClass('has-error');
+										$(element).closest('.form-group').addClass('has-success');
+										$(element).addClass('form-control-success');
+										$(element).removeClass('form-control-error');
+										},
+										errorElement: 'span',
+										errorClass: 'help-block',
+										errorPlacement: function (error, element) {
+													if (element.hasClass("invalidphone")) {
+															error.addClass("invalidphoneerror");
+															error.insertAfter(element);
+														} else {
+															error.insertAfter(element);
+														}
+												}
+										});
+	 
+var validator = $("#formId").validate({ /* settings */ });
+ 
+$("#btnSubmit").click(function(){
+ 
+ 
+ 
+
+ 
+ 
+
+if ($("#formId").valid()){
+ $(".page-loader").show()
+ 
+ var form = $('#formId')[0];
+ var formdata = new FormData(form);
+
+ 
+
+ 
+ formdata.delete('idproof');
+					 for (var i = 0; i < idproofselectedFiles.length; i++) {
+							 formdata.append('idproof', idproofselectedFiles[i]);
+						}
+
+ if (!validateFormDataFiles(formdata)) {
+				$(".page-loader").hide();
+				return false;
+			}
+ 
+
+ 
+$.ajax({
+url: posturl,
+type:'POST',
+enctype: 'multipart/form-data',
+processData: false,   
+contentType: false,
+cache: false,
+data: formdata,
+success: function(data) {
+  
+  $(".page-loader").hide();
+ if(data=="Success"){
+ $(".page-loader").hide();
+
+	var Actions_=getAutho("Guest","list")
+	if(Actions_ !=  undefined)
+	{
+		var list_URL = "@Url.Action("entry.viewname", "Guest")"
+																		list_URL = list_URL.replace("entry.viewname", Actions_.actionmethodname);
+																		window.location=list_URL;
+	 
+	}
+   
+ }
+	
+else if(data=="Session Expired"){
+
+			  swal({
+										title: "Error !!",
+										text: data,
+										type: "error",
+										showCancelButton: false,
+										confirmButtonText: "OK",
+										allowOutsideClick: false,
+										allowEscapeKey: false,
+										allowEnterKey: false
+										}).then(function() {
+										 window.location = "@Url.Action("Logout", "users")"		})
+					 
+		 }
+	else {
+								$(".page-loader").hide();
+								swal({
+									title: "Error !!",
+									text: data,
+
+									type: "error",
+									showCancelButton: false,
+									confirmButtonText: "OK",
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+								})
+
+
+							}
+
+ 
+},
+	error: function(jqXHR, textStatus, errorThrown) {
+	if (JSON.stringify(jqXHR.responseText) == "\"API Authorization failed\"")
+	{
+	swal({
+	title: 'Failed!',
+	text: jqXHR.responseText,
+	type: 'error',
+	buttonsStyling: false,
+	confirmButtonClass: 'btn btn-primary',
+	allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+	}).then(function() {
+	window.location = "@Url.Action("AuthorizationFailed", "users")"
+	}) 
+	}
+	else
+	{
+	swal({
+	title: 'Contact Administrator !',
+	text: jqXHR.responseText,
+	type: 'error',
+	buttonsStyling: false,
+	confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+	}) 
+	}
+	}
+})
+
+
+
+
+}else{
+validator.focusInvalid();
+swal({
+title: 'Validation Failed !',
+text: "Please check your entry",
+type: 'error',
+buttonsStyling: false,
+confirmButtonClass: 'btn btn-primary',
+allowOutsideClick: false,
+allowEscapeKey: false,
+allowEnterKey: false
+ })
+}
+})
+})
+
+function formatFileSize(bytes) {
+		if (bytes === 0) return '0 Bytes';
+		const k = 1024;
+		const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+		const i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+	}
+
+			function validateFormDataFiles(formdata) {
+		const MAX_FILE_SIZE =@Configuration.GetSection("FileUploadSettings")["MultipartBodyFileLimit"]; 
+			const MAX_TOTAL_SIZE = @Configuration.GetSection("FileUploadSettings")["MultipartBodyTotalLimit"]; 
+
+		let totalSize = 0;
+		let fileCount = 0;
+		let largeFiles = [];
+
+		// Iterate through all entries in FormData
+		for (let [key, value] of formdata.entries()) {
+			if (value instanceof File) {
+				fileCount++;
+				totalSize += value.size;
+
+				if (value.size > MAX_FILE_SIZE) {
+					largeFiles.push({
+						name: value.name,
+						size: value.size,
+						field: key
+					});
+				}
+			}
+		}
+
+		// No files uploaded
+		if (fileCount === 0) {
+			return true;
+		}
+
+		// Check for oversized individual files
+		if (largeFiles.length > 0) {
+			let fileList = largeFiles.map(file =>
+				`<li style="text-align: left; margin-bottom: 8px; font-family: inherit;">
+					<span style="font-weight: bold; font-family: inherit;">${file.name}</span><br>
+					<span style="color: #e74c3c; font-size: 0.9em; font-family: inherit;">Size: ${formatFileSize(file.size)}</span>
+				</li>`
+			).join('');
+
+			swal({
+				icon: 'error',
+				title: 'File Too Large',
+				html: `
+					<div style="text-align: left; font-family: inherit;">
+						<p style="margin-bottom: 15px; font-family: inherit;">The following files exceed the maximum allowed size of <strong style="font-family: inherit;">${formatFileSize(MAX_FILE_SIZE)}</strong>:</p>
+						<ul style="padding-left: 20px; margin-bottom: 20px; font-family: inherit;">
+							${fileList}
+						</ul>
+						<p style="color: #7f8c8d; font-size: 0.9em; font-family: inherit;">Please reduce the file sizes and try again.</p>
+					</div>
+				`,
+				confirmButtonText: 'Cancel',
+				confirmButtonColor: '#e74c3c',
+				width: '600px'
+				
+			});
+			return false;
+		}
+
+		// Check total size
+		if (totalSize > MAX_TOTAL_SIZE) {
+			const oversizeAmount = totalSize - MAX_TOTAL_SIZE;
+
+			swal({
+				icon: 'warning',
+				title: 'Total Upload Size Exceeded',
+				html: `
+					<div style="text-align: center; font-family: inherit;">
+						<div style="font-size: 3rem; color: #f39c12; margin-bottom: 15px;">📦</div>
+						<p style="margin-bottom: 10px; font-family: inherit;">You are trying to upload <strong style="font-family: inherit;">${fileCount} files</strong> with total size of:</p>
+						<h3 style="color: #e74c3c; margin: 15px 0; font-family: inherit;">${formatFileSize(totalSize)}</h3>
+						<p style="margin-bottom: 15px; font-family: inherit;">Maximum allowed total size is:</p>
+						<h3 style="color: #27ae60; margin: 15px 0; font-family: inherit;">${formatFileSize(MAX_TOTAL_SIZE)}</h3>
+						<p style="color: #e74c3c; font-weight: bold; margin-top: 20px; font-family: inherit;">
+							You need to reduce by: ${formatFileSize(oversizeAmount)}
+						</p>
+					</div>
+				`,
+				confirmButtonText: 'Reduce File Sizes',
+				confirmButtonColor: '#f39c12',
+				width: '500px',
+				
+			});
+			return false;
+		}
+
+		return true;
+	}
+
+
+</script>
+
+
+			
+			
+			
+			
+
+			 
+			 
+			    
+
+
+
+			 <!--to_cma_script-->
+			
+<script>
+					$(document).ready(function () {
+						 
+						$("#tenantid").change(function(){
+								 
+						})
+					
+
+					});
+					</script>
+
+
+

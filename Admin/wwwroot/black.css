@@ -1,0 +1,106 @@
+:root {
+    /* ========== FONT SETTINGS ========== */
+    --font-family: Helvetica Neue; /* Clean, modern font */
+    /* ========== SIDEBAR SETTINGS ========== */
+    --sidebar: linear-gradient(180deg, #333 15%, #000 80.29%);
+    --sidebarcolor: #ffffff;
+    --sidebaractivecolor: #ffffff;
+    --sidebaricon: #000;
+    --sidebariconbg: #ffffff;
+    --sidebarsubmenubgcolor: #000;
+    --sidebarsubmenucolor: #ffffff;
+    /* ========== HEADER SETTINGS ========== */
+    --Header: #ffffff;
+    --Headertext: #000000;
+    --HeaderShadow: box-shadow: 0px 4px 12px 0px rgba(76, 126, 166, 0.3);
+    --headerprofilecolor: #000; /* Light Gray for profile icon background */
+    /* ========== TABLE SETTINGS ========== */
+    --tableheader: #E9E9EE;
+    --tablecolor: #000000;
+    --tabelsecoundaybgcolor: #E9E9EE;
+    --tablelink: #E9E9EE;
+    /* ========== BORDER SETTINGS ========== */
+    --border-top: 1px solid #fff;
+    --border-bottom: 1px solid #fff;
+    --border-right: 1px solid #fff;
+    --border-left: 1px solid #fff;
+    --border-primary: 1px solid #000;
+    /* ========== BACKGROUND & LABEL SETTINGS ========== */
+    --bgwhite: #FFFFFF;
+    --labelcolor: #000;
+    /* ========== TEXT COLOR SETTINGS ========== */
+    --colorwhite: #FFFFFF;
+    --colorblack: #0093E6; /* Vivid Blue for primary text color */
+    /* ========== FONT SIZE & WEIGHT ========== */
+    --font-13: 13px;
+    --font-14: 14px;
+    --font-15: 15px;
+    --font-16: 16px;
+    --font-20: 20px;
+    --font-22: 22px;
+    --font-weight-400: 400;
+    --font-weight-600: 600;
+    --font-weight-700: 700;
+    --font-weight-800: 800;
+    /* ========== SPACING SETTINGS ========== */
+    --padding-0: 0px;
+    --padding-10: 10px;
+    --padding-20: 20px;
+    --margin-top-0: 0px;
+    --margin-bottom-0: 0px;
+    --margin-right-0: 0px;
+    --margin-left-0: 0px;
+    --btnborder-0: 0px;
+    /* ========== BORDER RADIUS SETTINGS ========== */
+    --border-radius-0: 0px;
+    --border-radius-4: 4px;
+    --border-radius-5: 5px;
+    --border-radius-10: 10px;
+    /* ========== BUTTON SETTINGS ========== */
+    --btnprimary: #000;
+    --btncolor: #ffffff;
+    --btnsecoundary: #ffffff;
+    --btnsecoundarycolor: #000;
+    --Addbtnbackground: #000;
+    /* ========== FORM SETTINGS ========== */
+    --input-form: 1px solid #000;
+    /* ========== CARD SETTINGS ========== */
+    --cardcolor: #000;
+    --cardshadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --card-head-header: #E9E9EE;
+    /* ========== ICON SETTINGS ========== */
+    --iconprimary: #000;
+    --actionicon: #000;
+    /* ========== TOGGLE SETTINGS ========== */
+    --tooglecolor: #000;
+    /* ========== PAGINATION SETTINGS ========== */
+    --paginate-count-button: #000;
+    /* ========== FILTER SETTINGS ========== */
+    --filterbg: #ffffff;
+    --bgfliterwhite: #FFFFFF;
+    /* ========== ALERT SETTINGS ========== */
+    --swalcolor: #000;
+    /* ========== SCROLLBAR SETTINGS ========== */
+    --scrollbarcolor: #000;
+    --scrollbarwidth: 5px;
+    --scrollbarheight: 3px;
+    /* ========== TAB SETTINGS ========== */
+    --tab-card-bg: #000;
+    --tab-border-radius: 5px;
+    --tab-height: 1px;
+    /* ========== Z-INDEX SETTINGS ========== */
+    --z-index-1: 1;
+    /* ========== DEPENDENT TABLE SETTINGS ========== */
+    --Dependtableheader: #000;
+    --Dependtablecolor: #ffffff;
+    --Dependalternativecolor: #000;
+    /* ========== BUTTON HOVER SETTINGS ========== */
+    --btncolorhover: #fff;
+    --btnsecoundarycolorhover: #000;
+    --Addbtnbackgroundhover: #ffffff;
+    --colorwhite: #fff;
+    --btnprimaryhover: #000;
+    --border-primaryhover: #000;
+    --btnsecoundaryhover: #adadad;
+    --checkbox: #000
+}

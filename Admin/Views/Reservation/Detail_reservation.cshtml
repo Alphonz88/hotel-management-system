@@ -1,0 +1,218 @@
+
+					<!--This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 6:56:04 AM -->
+					@using Microsoft.AspNetCore.Http
+					@inject IHttpContextAccessor HttpContextAccessor
+					@using Microsoft.Extensions.Configuration
+					@inject IConfiguration Configuration
+					@using Admin;
+					@model HotelManagementSystem1.Models.ReservationModel
+					@{
+					ViewData["Title"] = "Reservation";
+					Layout = "~/Views/Shared/_Layout.cshtml";
+					}
+
+					<div class="">
+						 
+					<div class="">
+
+						  <div id="cma_printableArea">
+						   
+							
+							<div class="row printablerow"  style="padding:20px"> 
+							  <div class="col-sm-12 col-xs-12 p-1 entityname_craftmyapp_viewcontainer show-on-pdf" style="display:none;text-align:left">
+							<h3>
+							<img src="~/images/logo.png" style="height:60px;width:60px;">
+							<b>Reservation</b>
+							</h3>
+				
+							<br />
+							</div>
+							<div class="col-sm-3 col-xs-12 p-2 reservationno_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="reservationno">@Resource.reservation_reservationno</label><br>
+										<span class="auto_cls_reservationno"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 guestno_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="guestno">@Resource.reservation_guestno</label><br>
+										<span class="auto_cls_guestno"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 bookingdate_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="bookingdate">@Resource.reservation_bookingdate</label><br>
+										<span class="auto_cls_bookingdate"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 checkindate_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="checkindate">@Resource.reservation_checkindate</label><br>
+										<span class="auto_cls_checkindate"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 checkoutdate_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="checkoutdate">@Resource.reservation_checkoutdate</label><br>
+										<span class="auto_cls_checkoutdate"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 reservationstatus_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="reservationstatus">@Resource.reservation_reservationstatus</label><br>
+										<span class="auto_cls_reservationstatus"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 roomtype_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="roomtype">@Resource.reservation_roomtype</label><br>
+										<span class="auto_cls_roomtype"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+<div class="col-sm-3 col-xs-12 p-2 noofguests_craftmyapp_viewcontainer">
+								<div>
+									<div class="form-group form-group--float-above my-3" > 
+										<label for="noofguests">@Resource.reservation_noofguests</label><br>
+										<span class="auto_cls_noofguests"></span>
+										<i class="form-group__bar" ></i>
+									</div>
+								</div>
+							</div>
+
+											 
+											 
+							</div>
+						 </div>
+						 <div id="comparisonContainer"></div>
+						 <div class="row">
+								<div class="col-sm-12 col-xs-12">
+								 
+								 <button type="button" onclick="window.location.href = document.referrer" class="btn btn-secondary cma_cancel_button cma_back_button waves-effect">@Resource.back</button>            
+
+								</div>
+							</div>					
+  
+					</div>
+					
+					<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+					<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script>
+					<link href="~/css/GallaryContent/style.css" rel="stylesheet" />
+					<link href="~/components/starrr/starrr.css" rel="stylesheet" />
+					 
+					 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+					<script type="text/javascript">
+					 function download() {
+							const element = document.getElementById('cma_printableArea');
+
+							const elementsToHide = document.querySelectorAll('.show-on-pdf');
+
+							// Hide the elements
+							elementsToHide.forEach(function (el) {
+							el.style.display = '';
+							});
+
+							html2pdf()
+							.from(element)
+							.save('Reservation.pdf')
+							.then(function () {
+							// Show the hidden elements after generating PDF
+							elementsToHide.forEach(function (el) {
+							el.style.display = 'none';
+							});
+							});
+					}
+
+					function fill_Reservation_view_data(){
+
+					   var  Reservationid = getUrlVars()["Reservationid"];
+											$("#viewDetails_Auto").show()
+											$(".auto_checker_action").hide()
+												$.ajax({
+												url: '@Url.Action("getById_allinfo_Reservation")',
+												dataType: 'json',
+												data:{Reservationid: Reservationid },
+												success: function(data) {
+
+												var obj=eval(data[0]);
+													for (var key in obj) {
+													
+															
+															$(".auto_cls_"+key).html(obj[key]|| '-');
+															
+															
+
+															
+
+													}
+
+													if (obj) {
+if (obj.hasOwnProperty('noofguests') && obj.noofguests) {
+    str_visible_noofguests = obj.noofguests;
+} else {
+    str_visible_noofguests = ''; 
+}
+if (str_visible_noofguests === "1") {
+    $(".bookingdate_craftmyapp_viewcontainer").show();
+} else {
+    $(".bookingdate_craftmyapp_viewcontainer").hide();
+}
+}
+
+												}
+
+												})
+
+				   }
+				   
+
+					$(document).ready(function () {
+
+
+					fill_Reservation_view_data()
+
+
+					/*var Actions=getAutho("Reservation","list")
+					if(Actions == undefined){
+					window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+					}*/
+
+
+
+
+					});
+					 
+					</script>
+
+					
+					<script type="text/javascript">
+						var str_visible_noofguests;
+
+						$(document).ready(function () {
+							$(".bookingdate_craftmyapp_viewcontainer").hide();
+
+						});
+					</script>
+					
+					
+					

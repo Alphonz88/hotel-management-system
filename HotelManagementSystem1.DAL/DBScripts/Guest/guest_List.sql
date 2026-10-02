@@ -1,0 +1,67 @@
+
+			  CREATE OR REPLACE FUNCTION  "guest_List"
+              (pvar_tenantid Varchar
+)
+			  RETURNS TABLE(tenantid uuid
+,_tenantName Varchar(128)
+,Guestid uuid
+,guestno Varchar,guestname Varchar,gender Varchar,phonenumber Varchar,email Varchar,addressline1 Varchar,city Varchar,statename Varchar,country Varchar,idproof Varchar,createduser uuid
+,createddate Timestamp(5)
+,modifieduser uuid
+,modifieddate Timestamp(5)
+)
+			  AS $BODY$
+              declare lvar_tenantid varchar[];declare lstr_usersid varchar;
+              
+			  BEGIN
+			  /*This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 6:08:15 AM*/
+			  		
+                SELECT  SPLIT_PART(pvar_tenantid, '|', 1),SPLIT_PART(pvar_tenantid, '|', 2) into lstr_usersid,pvar_tenantid;
+		        
+                if(pvar_tenantid is null or pvar_tenantid='' or pvar_tenantid='00000000-0000-0000-0000-000000000000')	
+				then
+                    SELECT STRING_TO_ARRAY(viewertenantids, ',') into lvar_tenantid
+				    FROM users where users.usersid::varchar=lstr_usersid;	
+                    if(lvar_tenantid is NULL)
+					then 
+						SELECT array_agg(tenant.tenantid) INTO lvar_tenantid FROM tenant;
+               
+					end if;
+                else 
+				  lvar_tenantid=ARRAY[pvar_tenantid];
+                end if;
+                lvar_tenantid := lvar_tenantid || ARRAY[''::character varying] || ARRAY['00000000-0000-0000-0000-000000000000'::character varying];
+
+
+
+              
+                RETURN QUERY
+				SELECT  
+				Guest.tenantid
+,tenant.businessname as _tenantName
+,Guest.Guestid
+,Guest.guestno
+,Guest.guestname
+,Guest.gender
+,Guest.phonenumber
+,Guest.email
+,Guest.addressline1
+,Guest.city
+,Guest.statename
+,Guest.country
+,Guest.idproof
+
+				
+				,Guest.createduser,Guest.createddate,Guest.modifieduser,Guest.modifieddate
+				FROM  Guest 
+ LEFT OUTER JOIN tenant ON Guest.tenantid=tenant.tenantid
+
+				WHERE (lvar_tenantid is null or COALESCE(cast(Guest.tenantid as varchar), '') = Any(lvar_tenantid)) AND Guest.isdeleted=false
+
+				 ORDER BY Guest.createddate DESC;
+			  
+					 	
+			  END
+              $BODY$
+              LANGUAGE plpgsql;
+

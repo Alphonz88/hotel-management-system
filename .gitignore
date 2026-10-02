@@ -1,0 +1,29 @@
+# Visual Studio / .NET
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs / local data
+*.log
+logs/
+
+# Local configuration / secrets
+.env
+.env.*
+secrets.json
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated publish output
+Publish/
+
+# Local uploads / runtime files
+**/wwwroot/uploads/

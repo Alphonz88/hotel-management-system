@@ -1,0 +1,850 @@
+
+			<!--This code generated from tDev Powered by Mahat, Build Number :#2024-01-001(Updated on 06-01-2024 12:57PM) on 7/31/2026 8:57:50 AM -->
+			@using Microsoft.AspNetCore.Http
+			@inject IHttpContextAccessor HttpContextAccessor
+			@using Microsoft.Extensions.Configuration
+			@inject IConfiguration Configuration
+			@using Admin;
+			@model HotelManagementSystem1.Models.InvoiceModel
+@{
+ViewData["Title"] = @Resource.invoicelist;
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+<div class="mobileHeader"><!--form_card_header-->
+					<div class="row">
+						<div class="col-sm-12 col-xs-12">
+							<h3 class="formHdr">@Resource.invoicelist</h3>
+						</div>
+					</div>
+				</div><!--form_card_header-->
+@if(TempData["message"] != null)
+{
+<div class="row">
+<div class="col-sm-12 col-xs-12">
+<div class="alert alert-success alert-dismissible ">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">x</span>
+</button>
+Info :  @TempData["message"]
+</div>
+</div>
+</div>
+}
+	<div class="row">
+						 
+
+						
+						
+						</div>
+						 
+@await Html.PartialAsync("~/Views/Shared/_PartialDashboard.cshtml")
+	<div class="card tab-card">
+		  <div class="card-head">
+			<ul class="nav nav-tabs" data-toggle="tabs">
+			  <li class="active cma_fill_tab"><a href="#cma_card_tab"><i class="fa fa-pie-chart"></i></a></li>
+			  <li class="cma_fill_tab"><a href="#cma_table_tab"><i class="fa fa-table"></i></a></li>
+		   </ul>
+		  </div>
+		  <!--end .card-head -->
+		  <div class="card-body tab-content pt-0">
+			
+			<div class="tab-pane active" id="cma_card_tab">
+				<div  class="dataTables_wrapper dicover-engae-wrap" style="min-height:0px">
+		   
+					<div class="dataTables__top" id="cma_card_tab_action_container">
+
+						<div class="dataTables_buttons actions" id="cma_card_tab_action_container_action_btn">
+					 
+						</div>
+					</div>
+				</div>   
+				<div class="row automaton_card" id="InvoiceContainer"> 
+	 
+
+				</div>
+			</div>
+			<!--end #cma_card_tab -->
+			
+		   <div class="tab-pane" id="cma_table_tab">
+			   
+				<div class="row automaton_table hidden-sm-down"><div class="col-sm-12 col-xs-12">
+					<div class="table-responsive" style="margin:0px;">
+							<table id="tblInvoice" class="table order-column hover responsive nowrap mahatTableWidthSetter" style="margin:0px; ">
+							<thead class="thead-default">
+							<tr>
+								
+							<th>@Resource.invoice_invoicenumber</th>
+<th>@Resource.invoice_guestno</th>
+<th>@Resource.invoice_bookingnumber</th>
+<th>@Resource.invoice_invoicedate</th>
+<th>@Resource.invoice_roomcharges</th>
+<th>@Resource.invoice_taxdiscount</th>
+<th>@Resource.invoice_totalamount</th>
+<th>@Resource.invoice_verifiedstatus</th>
+
+							<th class="all">Action</th>
+
+							</tr>
+							</thead>
+							<tbody></tbody>
+							
+							</table>
+					</div>
+				  </div>
+			</div>
+				<!--end #cma_table_tab -->
+		   
+		  </div>
+		  <!--end .card-body -->
+</div>
+<!--end .tab-card -->
+	 
+	
+
+<link href="~/components/jquery-colorbox/colorbox.css" rel="stylesheet" />
+<script src="~/components/jquery-colorbox/jquery.colorbox.js"></script>
+ 
+  <link href="~/components/starrr/starrr.css" rel="stylesheet" />
+
+  <script src="~/components/Chart.js-master/2.8.0/chart.js"></script>
+   <script src="~/components/Chart.js-master/2.8.0/hammer.js"></script>
+   <script src="~/components/Chart.js-master/2.8.0/chartjs-plugin-zoom0_7_3.js"></script>
+ <script src="~/js/dtpager.js"></script>
+ 
+
+ <script type="text/javascript">
+	var arr_selected_for_verification = [];
+ function fill_Invoice()
+ {
+	 
+	 var sendFilterData = {
+															
+														}
+	 var Invoicedata;
+$.ajax({
+type: "GET",
+url: "@Url.Action("get_Invoice_List", "Invoice")",
+	data: sendFilterData,
+	contentType: "application/json; charset=utf-8",
+	 dataType: "Json",
+	 async: false,
+	success: function(data) {
+	var resultSet = data;
+	Invoicedata = data;
+	},
+	error: function () {
+$("#InvoiceContainer").empty()
+	$("#InvoiceContainer").append('No Data');
+	}
+	});
+if (Invoicedata.length > 0){
+$.ajax({
+type: "GET",
+url: "@Url.Action("metrics_of_Invoice", "Invoice")",
+	data: sendFilterData,
+	contentType: "application/json; charset=utf-8",
+	 dataType: "Json",
+	 async: false,
+	success: function(data) {
+	var resultSet = data;
+if (data.length > 0)
+{
+$("#InvoiceContainer").empty()
+}
+else
+{
+$("#InvoiceContainer").empty()
+$("#InvoiceContainer").append('<div class="col-md-3 col-sm-6 col-xs-12">No Data</div>');
+}
+	 $.each(resultSet, function(key, obj) {
+	 var chartdata = obj.reportjson
+	 chartdata = $.parseJSON(chartdata)
+if(JSON.stringify(chartdata).includes("line_invoicedate_sum_totalamount"))
+										{
+									 if (chartdata.line_invoicedate_sum_totalamount == null)
+												return;
+
+												var graphdata=(chartdata["line_invoicedate_sum_totalamount"])
+
+												var chartLables=[]
+												var chartValues=[]
+												var backgroundColors=[]																			
+ 
+												$.each(graphdata, function(keyGraph, objGraph) {
+												chartLables.push(objGraph.dimension)
+												chartValues.push(objGraph.metric)
+												backgroundColors.push(getFixedColor(keyGraph))
+												})
+
+												var maxValue = Math.max.apply(Math, chartValues);
+												var minValue = Math.min.apply(Math, chartValues);
+
+												$('#InvoiceContainer').append("<div class='col-sm-4 col-xs-12'><div class='card image-card'><canvas height='250px' id='line_invoicedate_sum_totalamount'><canvas></div></div>");
+												canvas = document.querySelector('#line_invoicedate_sum_totalamount');
+												var ctx = canvas.getContext('2d');
+
+												
+						var chartDataSet = {
+								labels: chartLables,
+								datasets: [{
+									label: 'totalamount',
+									backgroundColor: backgroundColors,
+									borderColor:backgroundColors,
+									data: chartValues,
+									fill: false
+								} ]
+
+							};
+
+							var myChart = new window.Chart(ctx, {
+							type: 'line',
+							data: chartDataSet,
+							options:{
+								 
+								responsive: true,
+								legend: {
+								display: false,
+									position: 'bottom',
+								},
+								title: {
+									display: true,
+									text: 'Hotel'
+								},
+								scales: {
+									xAxes: [{
+										ticks: {
+											min: minValue,
+											max: maxValue,
+											  callback: function(value) {
+												 if (value!=null && value.length > 15) {
+													return value.substr(0, 15) + '...'; //truncate
+												} else {
+													return value
+												}
+
+											}
+										}
+									}],
+									yAxes: [{
+									ticks: {
+									callback: function(label, index, labels) {
+										return label.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+									}
+									} 
+									}]
+								},
+								tooltips: {
+								   callbacks: {
+										title: function(tooltipItems, data) {
+											var idx = tooltipItems[0].index;
+											return  data.labels[idx] ;
+										},
+										label: function(tooltipItems, data) {
+											return tooltipItems.xLabel +': '+ tooltipItems.yLabel ;
+										}
+									}
+								},
+								plugins: {
+									zoom: {
+										pan: {
+											enabled: true,
+											mode: 'x',
+											speed: 10,
+											threshold: 10
+											
+										},
+										zoom: {
+										
+											enabled: true,
+											mode: 'x',
+											speed: 10,
+											threshold: 10
+											
+										}
+									}
+								}
+								,
+							onClick: function(c,i) {
+							e = i[0];
+							var x_value = this.data.labels[e._index];
+							var y_value = this.data.datasets[0].data[e._index];
+							$('#invoicedate').val(this.data.labels[e._index]);
+							fill_Invoice();
+							$('a[href="#cma_table_tab"]').click();
+							$('#invoicedate').val('');
+							}  
+							}<!-- CHART OPTIONS ENDS --> 
+						
+						
+						
+						
+						});
+
+
+
+		
+		
+										}
+										
+if(JSON.stringify(chartdata).includes("doughnut_invoicenumber_maximum_taxdiscount"))
+										{
+											if (chartdata.doughnut_invoicenumber_maximum_taxdiscount == null)
+												return;
+											   
+												var graphdata=(chartdata["doughnut_invoicenumber_maximum_taxdiscount"])
+
+												var chartLables=[]
+												var chartValues=[]
+												var backgroundColors=[]																			
+ 
+												$.each(graphdata, function(keyGraph, objGraph) {
+												chartLables.push(objGraph.dimension)
+												chartValues.push(objGraph.metric)
+												backgroundColors.push(getFixedColor(keyGraph))
+												})
+
+												var maxValue = Math.max.apply(Math, chartValues);
+												var minValue = Math.min.apply(Math, chartValues);
+
+												$('#InvoiceContainer').append("<div class='col-sm-4 col-xs-12'><div class='card image-card'><div><canvas height='170px' id='doughnut_invoicenumber_maximum_taxdiscount'></canvas></div><br><div><div id='legend_doughnut_invoicenumber_maximum_taxdiscount' class='chart-legend'></div></div></div></div>");
+												canvas = document.querySelector('#doughnut_invoicenumber_maximum_taxdiscount');
+												var ctx = canvas.getContext('2d');
+
+												var chartDataSet = {
+								labels: chartLables,
+								datasets: [{
+									label: 'taxdiscount',
+									backgroundColor: backgroundColors,
+									data: chartValues
+
+								} ]
+
+							}
+							
+						var mychart = new window.Chart(ctx, {
+							type: 'doughnut',
+							data: chartDataSet,
+							options:{
+								 
+								showScale: false,  
+								responsive: true,
+								title: {
+									display: true,
+									text: 'Hotel'
+								},
+								 legend: {
+									 display:false
+									
+								},
+								 
+								options: {
+								  title: {
+									display: true,
+									text: 'Hotel'
+								  }
+								},
+								plugins: {
+									zoom: {
+										pan: {
+											enabled: true,
+											mode: 'x',
+											speed: 10,
+											threshold: 10
+											
+										},
+										zoom: {
+										
+											enabled: true,
+											mode: 'x',
+											speed: 10,
+											threshold: 10
+											
+										}
+									}
+								}
+								,
+							onClick: function(c,i) {
+							e = i[0];
+							var x_value = this.data.labels[e._index];
+							var y_value = this.data.datasets[0].data[e._index];
+							$('#invoicenumber').val(this.data.labels[e._index]);
+							fill_Invoice();
+							$('a[href="#cma_table_tab"]').click();
+							$('#invoicenumber').val('');
+							}
+							}<!-- CHART OPTIONS ENDS --> 
+						
+						
+						
+						
+						});
+
+
+
+						
+												document.getElementById('legend_doughnut_invoicenumber_maximum_taxdiscount').innerHTML = mychart.generateLegend();
+		
+		
+										}
+										
+if(JSON.stringify(chartdata).includes("pie_bookingnumber_count_roomcharges"))
+										{
+											if (chartdata.pie_bookingnumber_count_roomcharges == null)
+												return;
+											   
+												var graphdata=(chartdata["pie_bookingnumber_count_roomcharges"])
+
+												var chartLables=[]
+												var chartValues=[]
+												var backgroundColors=[]																			
+ 
+												$.each(graphdata, function(keyGraph, objGraph) {
+												chartLables.push(objGraph.dimension)
+												chartValues.push(objGraph.metric)
+												backgroundColors.push(getFixedColor(keyGraph))
+												})
+
+												var maxValue = Math.max.apply(Math, chartValues);
+												var minValue = Math.min.apply(Math, chartValues);
+
+												$('#InvoiceContainer').append("<div class='col-sm-4 col-xs-12'><div class='card image-card'><div><canvas height='170px' id='pie_bookingnumber_count_roomcharges'></canvas></div><br><div><div id='legend_pie_bookingnumber_count_roomcharges' class='chart-legend'></div></div></div></div>");
+												canvas = document.querySelector('#pie_bookingnumber_count_roomcharges');
+												var ctx = canvas.getContext('2d');
+
+												var chartDataSet = {
+								labels: chartLables,
+								datasets: [{
+									label: 'roomcharges',
+									backgroundColor: backgroundColors,
+									data: chartValues
+
+								} ]
+
+							}
+							
+						var mychart = new window.Chart(ctx, {
+							type: 'pie',
+							data: chartDataSet,
+							options:{
+								 
+								showScale: false, 
+								responsive: true,
+								title: {
+									display: true,
+									text: 'Hotel'
+								},
+								legend: {
+									 display:false
+									
+								},
+								 
+								options: {
+								  title: {
+									display: true,
+									text: 'Hotel'
+								  }
+								},
+								plugins: {
+									zoom: {
+										pan: {
+											enabled: true,
+											mode: 'x',
+											speed: 10,
+											threshold: 10
+											
+										},
+										zoom: {
+										
+											enabled: true,
+											mode: 'x',
+											speed: 10,
+											threshold: 10
+											
+										}
+									}
+								}
+								,
+							onClick: function(c,i) {
+							e = i[0];
+							var x_value = this.data.labels[e._index];
+							var y_value = this.data.datasets[0].data[e._index];
+							$('#bookingnumber').val($('#bookingnumber option:contains("'+this.data.labels[e._index]+'")').val());
+							fill_Invoice();
+							$('a[href="#cma_table_tab"]').click();
+							$('#bookingnumber').val('');
+							}
+							}<!-- CHART OPTIONS ENDS --> 
+						
+						
+						
+						
+						});
+
+
+
+						
+												document.getElementById('legend_pie_bookingnumber_count_roomcharges').innerHTML = mychart.generateLegend();
+		
+		
+										}
+										
+	});
+	},
+	error: function () {
+$("#InvoiceContainer").empty()
+	$("#InvoiceContainer").append('No Data');
+	}
+	});
+}
+else {
+$("#InvoiceContainer").empty()
+$("#InvoiceContainer").append('<div class="col-md-3 col-sm-6 col-xs-12">No Data</div>');
+}
+
+
+
+	var table=$("#tblInvoice").DataTable({
+columnDefs: [{ 
+	 targets: -1,
+	 title: '<i class="fa fa-pencil fa-lg"></i>'
+  }], 
+		destroy:true,
+	"orderMulti": false,
+"order": [],
+"aaSorting": [],
+	autoWidth: !1,responsive:!0,
+	lengthMenu: [
+	[15, 30, 45, -1],
+	["15 Rows", "30 Rows", "45 Rows", "Everything"]
+	],
+	language: {
+	searchPlaceholder: "Search for records..."
+	},
+	 language: { search: '<i class="fa fa-search"></i>', searchPlaceholder: "Search for records..." },
+	dom: "Bfrtip",
+	   sDom: '<"dataTables__top"lfB>rt<"dataTables__bottom"ip><"clear">',
+	buttons: [{
+	extend: "excelHtml5",
+	title: "List Of Invoice Data"
+	}, {
+	extend: "csvHtml5",
+	title: "List Of Invoice Data"
+	}, {
+	extend: "print",
+	title: "List Of Invoice Data"
+	}],
+ initComplete: function(a, b) {
+	   
+		 $(this).closest(".dataTables_wrapper").find(".dt-buttons").hide();
+	  
+		if ($('#btnFilter').length && !$(this).closest(".dataTables_wrapper").find(".automatonShowFilter").length) {
+	 $(this).closest(".dataTables_wrapper").find(".dataTables_length").prepend(`
+		<i class="automatonShowFilter actions__item mdi material-icons">filter_alt</i>
+	  `);
+
+		 if ($("#cma_card_tab_action_container i.automatonShowFilter").length === 0) {
+			$("#cma_card_tab_action_container").prepend(`
+				<i class="automatonShowFilter actions__item mdi material-icons">filter_alt</i>
+			`);
+		}
+ }
+
+var Actions=getAutho("Invoice","create")
+		if(Actions != undefined){
+			var create_URL = "@Url.Action("entry.viewname", "Invoice")"
+			create_URL = create_URL.replace("entry.viewname", Actions.actionmethodname);
+
+if ($(this).closest(".dataTables_wrapper").find(".dataTables__top .dataTables_buttons").length == 0) {
+			  $(this).closest(".dataTables_wrapper").find(".dataTables__top").prepend(`   
+	   
+		
+		<div class="dataTables_buttons actions">
+		<div class="input-group prefix">
+							<span class="input-group-addon">
+							<i class="material-icons">search</i>
+							</span>
+							<input type="text" class="form-control dt-global-search" placeholder="Search..." />
+						</div>
+		  <div class="dropdown actions__item cma_top_icon">
+			<i data-toggle="dropdown" class="material-icons">share</i>
+			<ul class="dropdown-menu dropdown-menu-right">
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="excel">Excel (.xlsx)</a>
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="csv">CSV (.csv)</a>
+			 
+			</ul>
+		  </div>
+		  <div class="dropdown actions__item cma_top_icon">
+									<i data-toggle="dropdown" class="material-icons">settings</i>
+									<ul class="dropdown-menu dropdown-menu-right ColVis_collection">
+									<li>
+																<label> @Resource.invoice_invoicenumber
+ <input type="checkbox" class="colvis_switch" data-column="0" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_guestno
+ <input type="checkbox" class="colvis_switch" data-column="1" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_bookingnumber
+ <input type="checkbox" class="colvis_switch" data-column="2" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_invoicedate
+ <input type="checkbox" class="colvis_switch" data-column="3" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_roomcharges
+ <input type="checkbox" class="colvis_switch" data-column="4" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_taxdiscount
+ <input type="checkbox" class="colvis_switch" data-column="5" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_totalamount
+ <input type="checkbox" class="colvis_switch" data-column="6" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_verifiedstatus
+ <input type="checkbox" class="colvis_switch" data-column="7" checked /></label>
+															  </li>
+   
+									</ul>
+									</div>
+		 <a href="create_URL" class="btn btn-rounded add-row-btn cma_add_button">Add <span class="material-icons">add</span></a>
+		</div>
+	  `.replace("create_URL", create_URL))
+}
+
+		$("#cma_card_tab_action_container .card-lst").remove();
+		$("#cma_card_tab_action_container_action_btn").empty()
+		$("#cma_card_tab_action_container_action_btn").append(' <a href="create_URL" class="btn btn-rounded add-row-btn cma_add_button">Add <span class="material-icons">add</span></a>'.replace("create_URL", create_URL))
+	   
+
+
+			if ($(this).hasClass('make-active')) {
+		$('tbody', $(this)).children('tr').first().addClass('active-row');
+		setTimeout(() => {
+		  $('.active-row td:visible:last').addClass('last-active-td');
+		}, 200);
+	  }
+	  $(this).closest(".dataTables_wrapper").find(".dt-global-search").on('keyup', function() {
+		table.search(this.value).draw();
+	  });
+		}else{
+if ($(this).closest(".dataTables_wrapper").find(".dataTables__top .dataTables_buttons").length == 0) {
+			$(this).closest(".dataTables_wrapper").find(".dataTables__top").prepend(` 
+		
+		<div class="dataTables_buttons actions">
+<div class="input-group prefix">
+							<span class="input-group-addon">
+							<i class="material-icons">search</i>
+							</span>
+							<input type="text" class="form-control dt-global-search" placeholder="Search..." />
+						</div>
+		  <div class="dropdown actions__item cma_top_icon">
+			<i data-toggle="dropdown" class="material-icons">share</i>
+			<ul class="dropdown-menu dropdown-menu-right">
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="excel">Excel (.xlsx)</a>
+			  <a href="javascript: void 0" class="dropdown-item" data-table-action="csv">CSV (.csv)</a>
+			 
+			</ul>
+		  </div>
+		 <div class="dropdown actions__item cma_top_icon">
+									<i data-toggle="dropdown" class="material-icons">settings</i>
+									<ul class="dropdown-menu dropdown-menu-right ColVis_collection">
+									<li>
+																<label> @Resource.invoice_invoicenumber
+ <input type="checkbox" class="colvis_switch" data-column="0" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_guestno
+ <input type="checkbox" class="colvis_switch" data-column="1" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_bookingnumber
+ <input type="checkbox" class="colvis_switch" data-column="2" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_invoicedate
+ <input type="checkbox" class="colvis_switch" data-column="3" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_roomcharges
+ <input type="checkbox" class="colvis_switch" data-column="4" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_taxdiscount
+ <input type="checkbox" class="colvis_switch" data-column="5" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_totalamount
+ <input type="checkbox" class="colvis_switch" data-column="6" checked /></label>
+															  </li>
+<li>
+																<label> @Resource.invoice_verifiedstatus
+ <input type="checkbox" class="colvis_switch" data-column="7" checked /></label>
+															  </li>
+   
+									</ul>
+									</div>
+		</div>
+	  `)
+}
+if ($(this).hasClass('make-active')) {
+		$('tbody', $(this)).children('tr').first().addClass('active-row');
+		setTimeout(() => {
+		  $('.active-row td:visible:last').addClass('last-active-td');
+		}, 200);
+	  }
+	  $(this).closest(".dataTables_wrapper").find(".dt-global-search").on('keyup', function() {
+		table.search(this.value).draw();
+	  });
+
+		}
+
+  
+ 
+		 
+
+	}
+	  ,columns: [
+		 
+		{data: 'invoicenumber'},
+{data: 'guestno'},
+{data: 'bookingnumber'},
+{data: 'invoicedate'},
+{data: 'roomcharges',mRender: function (data, type, row) {if(row["roomcharges"]==null) {
+ return '-' 
+}else {
+ return '&#8377;'+ row["roomcharges"] 
+}
+}},
+{data: 'taxdiscount'},
+{data: 'totalamount'},
+{data: 'verifiedstatus'},
+
+		{
+					"sName": "invoiceid",
+					"bSearchable": false,
+					"bSortable": false,
+					data: 'invoiceid', "className": "dt-center",
+					mRender: function(data, type, row) {
+											var Actions=getAuthoController("Invoice")
+											var appendMessage='';
+											if(Actions !=undefined)
+											{
+												for (var index = 0; index < Actions.length; ++index) {
+													var entry = Actions[index];
+														
+													var URL = "@Url.Action("entry.viewname", "Invoice")?Invoiceid=" + row["invoiceid"]
+													URL = URL.replace("entry.viewname",entry.actionmethodname);
+													if ((entry.viewname == "approved_detail")) {
+														appendMessage += '<a href="' + URL + '" class="dropdown-item">' + entry.actiondisplayname + '</a>'
+													}				 
+													
+												}
+					 
+												return '<div class="dropdown actions__item">' +
+												'<i data-toggle="dropdown" class="fa fa-ellipsis-h"></i>' +
+												'<div class="dropdown-menu dropdown-menu-right">' + appendMessage +
+		 
+
+												'</div>' +
+												'</div>'
+											}
+									}
+
+						}
+
+	 ],
+	data:Invoicedata
+	})
+		  
+ $('body').on('click', '.ColVis_collection li', function(a) {
+	event.stopPropagation();
+  });
+ 
+ $('body').on('change', '.colvis_switch', function(a) {
+	var column = table.column($(this).attr('data-column'));
+	column.visible(!column.visible());
+  });
+
+
+ 
+
+  $(".dataTables_filter input[type=search]").focus(function() {
+	$(this).closest(".dataTables_filter").addClass("dataTables_filter--toggled")
+  }), $(".dataTables_filter input[type=search]").blur(function() {
+	$(this).closest(".dataTables_filter").removeClass("dataTables_filter--toggled")
+  })
+
+
+
+  
+	 
+
+}
+
+
+$(document).ready(function () {
+
+ 
+		 
+ fill_Invoice()
+
+		$(".cma_fill_tab").click(function(){
+				fill_Invoice()
+		})
+
+		var Actions=getAutho("Invoice","list_verify_approved")
+		if(Actions == undefined){
+			window.location = "@Url.Action("RoleAuthorizationFailed", "users")"
+		}
+	
+ 
+});
+
+
+	$("body").on("click", "[data-table-action]", function(a) {
+	a.preventDefault();
+	var b = $(this).data("table-action");
+   // console.log('dataTables_wrapper', $(this).closest(".dataTables_wrapper").find(".buttons-print"));
+	if ("excel" === b && $(this).closest(".dataTables_wrapper").find(".buttons-excel").trigger("click"), "csv" === b && $(this).closest(".dataTables_wrapper").find(".buttons-csv").trigger("click"), "print" === b && $(this).closest(".dataTables_wrapper").find(".buttons-print").trigger("click"), "fullscreen" === b) {
+	  var c = $(this).closest(".card");
+	  c.hasClass("card--fullscreen") ? (c.removeClass("card--fullscreen"), $("body").removeClass("data-table-toggled")) : (c.addClass("card--fullscreen"), $("body").addClass("data-table-toggled"))
+	}
+  });
+</script>
+
+
+
+
+						<script>
+						$(document).ready(function () {
+
+							 
+
+							$("#btnFilter").click(function(){
+
+								$("#InvoiceContainer").empty()
+								fill_Invoice();
+							})
+
+								var Actions_=getAutho("Invoice","create")
+								if(Actions_ !=  undefined)
+								{
+									 var create_URL = "@Url.Action("entry.viewname", "Invoice")"
+									create_URL = create_URL.replace("entry.viewname", Actions_.actionmethodname);
+									$(".btnCreate").attr('href',create_URL)
+									$(".btnCreate").show()
+								}
+
+
+						});
+						</script>
+
+
+
